@@ -54,3 +54,19 @@ tracking and a clean tracked worktree. No force push is required or authorized.
   failures or skips, 1.430 seconds. No source code changes accompany publication.
 - Independent staged-file review passes: required application/install files are
   included, generated/binary artifacts are excluded, and branch/remote are correct.
+
+
+### Confirmed source delivery
+
+On 2026-10-11, the initial source commit `b016e8de20dc8dad1fd728e8104f1353375de7c1` was successfully pushed to
+`origin/main`. Git's advertised remote `refs/heads/main` exactly matched the local
+commit, upstream tracking was `origin/main`, and the tracked worktree was clean
+before this delivery record was added.
+
+The HTTPS push initially lacked terminal credentials. The existing SSH login
+successfully pushed the same user-selected repository. `origin` retains the
+requested HTTPS fetch URL and now uses
+`git@github.com:TianZhuAI4S/MaSIF_torch.git` as its repository-specific push URL,
+so subsequent ordinary `git push` commands use the working authentication.
+No credentials were copied into the project. This documentation record is committed
+and pushed as a normal follow-up; remote/local equality is checked again afterward.

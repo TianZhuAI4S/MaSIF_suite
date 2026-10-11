@@ -325,7 +325,7 @@ No model equation or scientific acceptance scope changed. See
 
 ## Source repository publication
 
-The standalone source is prepared for the user-selected GitHub repository
+The standalone source is published to the user-selected GitHub repository
 [TianZhuAI4S/MaSIF_torch](https://github.com/TianZhuAI4S/MaSIF_torch) on branch `main`.
 The initial remote is empty. Source, portable installation/configuration files,
 examples, tests, documentation, numerical evidence and the weight catalog/manifest
