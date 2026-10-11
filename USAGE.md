@@ -7,6 +7,7 @@ that matches your goal.
 ## Contents
 
 - [Getting started](#getting-started)
+- [Notebook tutorials](#notebook-tutorials)
 - [Input data and preparation](#input-data-and-preparation)
 - [Neural-network applications](#neural-network-applications)
 - [MaSIF-seed and MaSIF-neosurface](#masif-seed-and-masif-neosurface)
@@ -77,6 +78,31 @@ masif site --config configs/site.yaml --cfg job
 Paths are relative to the directory where you launch the command. Replace example
 paths with your own files. Preparation and Rosetta examples also contain external
 tool paths that must be changed for your machine.
+
+## Notebook tutorials
+
+If you prefer working through a notebook, choose your task below. Follow the
+[opening instructions](tutorials/README.md#open-a-tutorial), then edit the input,
+checkpoint and destination settings in the notebook. Run the cells in order;
+set `RUN_TASK = True` when your files are ready.
+
+| Tutorial | What you will do |
+|---|---|
+| [MaSIF-site](tutorials/site.ipynb) | Predict interaction sites from a prepared surface |
+| [MaSIF-search](tutorials/search.ipynb) | Compute surface fingerprints |
+| [MaSIF-ligand](tutorials/ligand.ipynb) | Classify a prepared binding pocket |
+| [ScoreNN](tutorials/score.ipynb) | Score prepared candidate interactions |
+| [Alignment](tutorials/alignment.ipynb) | Score prepared alignment features |
+| [MaSIF-seed](tutorials/seed.ipynb) | Retrieve and dock candidate binders |
+| [MaSIF-neosurface](tutorials/neosurface.ipynb) | Score an aligned protein–ligand target and binder |
+| [Protein preparation](tutorials/prepare_protein.ipynb) | Prepare a protein PDB for MaSIF |
+| [Protein–ligand preparation](tutorials/prepare_ligand.ipynb) | Prepare a ligand-containing target |
+| [Rosetta](tutorials/rosetta.ipynb) | Refine a positioned target–ligand–binder complex |
+| [Training](tutorials/training.ipynb) | Train, fine-tune and continue neural tasks |
+| [Public benchmark](tutorials/benchmark.ipynb) | Configure the optional full dataset workflow |
+
+The notebook commands use the environment selected by the Jupyter kernel. Choose
+`Python (masif_torch)` so the notebook runs in your MaSIF installation.
 
 ## Input data and preparation
 

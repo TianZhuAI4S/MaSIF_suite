@@ -173,6 +173,30 @@ There are two starting points:
 
 Original TensorFlow/Keras checkpoints can be converted to native Torch checkpoints. Conversion and pretrained-model provenance are documented in the [weight guide](USAGE.md#convert-tensorflow-weights). Ready-to-use weights are grouped by task under `weights/`, with filenames describing their purpose. See the [weight catalog](weights/README.md) for variants, provenance and known limits. Provide the appropriate task checkpoint in the commands below; ScoreNN and alignment checkpoints represent different models.
 
+## Tutorials
+
+Start with a notebook for your task. Each tutorial introduces the inputs, lets you
+edit settings, and previews the command before you run it with your own data.
+
+| Tutorial | What you will do |
+|---|---|
+| [MaSIF-site](tutorials/site.ipynb) | Predict interaction sites from a prepared surface |
+| [MaSIF-search](tutorials/search.ipynb) | Compute surface fingerprints |
+| [MaSIF-ligand](tutorials/ligand.ipynb) | Classify a prepared binding pocket |
+| [ScoreNN](tutorials/score.ipynb) | Score prepared candidate interactions |
+| [Alignment](tutorials/alignment.ipynb) | Score prepared alignment features |
+| [MaSIF-seed](tutorials/seed.ipynb) | Retrieve and dock candidate binders |
+| [MaSIF-neosurface](tutorials/neosurface.ipynb) | Score an aligned protein–ligand target and binder |
+| [Protein preparation](tutorials/prepare_protein.ipynb) | Prepare a protein PDB for MaSIF |
+| [Protein–ligand preparation](tutorials/prepare_ligand.ipynb) | Prepare a ligand-containing target |
+| [Rosetta](tutorials/rosetta.ipynb) | Refine a positioned target–ligand–binder complex |
+| [Training](tutorials/training.ipynb) | Train, fine-tune and continue neural tasks |
+| [Public benchmark](tutorials/benchmark.ipynb) | Configure the optional full dataset workflow |
+
+See [opening and running notebooks](tutorials/README.md#open-a-tutorial) for Jupyter
+setup. Choose the `Python (masif_torch)` kernel. Provide the task's input files and
+checkpoint, then set `RUN_TASK = True` to start the configured calculation.
+
 ## Applications
 
 All applications use `masif <application> key=value`. Paths resolve from the directory where the command is launched. Inspect the effective settings without running a task:
@@ -303,23 +327,148 @@ Some original checkpoints contain NaN and are rejected. Independent IPA training
 
 - [Installation](#installation)
 - [User guide](USAGE.md)
+- [Task notebooks](tutorials/README.md)
 - [License](LICENSE) and [BibTeX citation](citation.bib)
 
 ## Reference
 
-### Original methods used by this repository
+If you use MaSIF in your research, please cite the paper for the application you
+use. Copy the relevant BibTeX entry below, or download [citation.bib](citation.bib).
 
-1. **MaSIF-site, MaSIF-search, MaSIF-ligand and second-stage scoring:** Gainza, P., et al. *Deciphering interaction fingerprints from protein molecular surfaces using geometric deep learning.* **Nature Methods 17**, 184–192 (2020). [DOI: 10.1038/s41592-019-0666-6](https://doi.org/10.1038/s41592-019-0666-6).
-2. **MaSIF-seed and protein binder design:** Gainza, P., et al. *De novo design of protein interactions with learned surface fingerprints.* **Nature 617**, 176–184 (2023). [DOI: 10.1038/s41586-023-05993-x](https://doi.org/10.1038/s41586-023-05993-x).
-3. **MaSIF-neosurf / MaSIF-neosurface:** Marchand, A., et al. *Targeting protein–ligand neosurfaces with a generalizable deep learning tool.* **Nature 639**, 522–531 (2025). [DOI: 10.1038/s41586-024-08435-4](https://doi.org/10.1038/s41586-024-08435-4).
+#### MaSIF-site, MaSIF-search, MaSIF-ligand and ScoreNN
+
+[Paper](https://doi.org/10.1038/s41592-019-0666-6)
+
+```bibtex
+@article{gainza2020deciphering,
+  title = {Deciphering interaction fingerprints from protein molecular surfaces using geometric deep learning},
+  author = {Gainza, P. and Sverrisson, F. and Monti, F. and Rodolà, E. and Boscaini, D. and Bronstein, M. M. and Correia, B. E.},
+  journal = {Nature Methods},
+  volume = {17},
+  number = {2},
+  year = {2020},
+  doi = {10.1038/s41592-019-0666-6},
+  url = {https://doi.org/10.1038/s41592-019-0666-6},
+  pages = {184--192}
+}
+```
+
+#### MaSIF-seed and protein binder design
+
+[Paper](https://doi.org/10.1038/s41586-023-05993-x)
+
+```bibtex
+@article{gainza2023design,
+  title = {De novo design of protein interactions with learned surface fingerprints},
+  author = {Gainza, Pablo and Wehrle, Sarah and Van Hall-Beauvais, Alexandra and Marchand, Anthony and Scheck, Andreas and Harteveld, Zander and Buckley, Stephen and Ni, Dongchun and Tan, Shuguang and Sverrisson, Freyr and Goverde, Casper and Turelli, Priscilla and Raclot, Charlène and Teslenko, Alexandra and Pacesa, Martin and Rosset, Stéphane and Georgeon, Sandrine and Marsden, Jane and Petruzzella, Aaron and Liu, Kefang and Xu, Zepeng and Chai, Yan and Han, Pu and Gao, George F. and Oricchio, Elisa and Fierz, Beat and Trono, Didier and Stahlberg, Henning and Bronstein, Michael and Correia, Bruno E.},
+  journal = {Nature},
+  volume = {617},
+  number = {7959},
+  year = {2023},
+  doi = {10.1038/s41586-023-05993-x},
+  url = {https://doi.org/10.1038/s41586-023-05993-x},
+  pages = {176--184}
+}
+```
+
+#### MaSIF-neosurface
+
+[Paper](https://doi.org/10.1038/s41586-024-08435-4)
+
+```bibtex
+@article{marchand2025neosurfaces,
+  title = {Targeting protein--ligand neosurfaces with a generalizable deep learning tool},
+  author = {Marchand, Anthony and Buckley, Stephen and Schneuing, Arne and Pacesa, Martin and Elia, Maddalena and Gainza, Pablo and Elizarova, Evgenia and Neeser, Rebecca M. and Lee, Pao-Wan and Reymond, Luc and Miao, Yangyang and Scheller, Leo and Georgeon, Sandrine and Schmidt, Joseph and Schwaller, Philippe and Maerkl, Sebastian J. and Bronstein, Michael and Correia, Bruno E.},
+  journal = {Nature},
+  volume = {639},
+  number = {8054},
+  year = {2025},
+  doi = {10.1038/s41586-024-08435-4},
+  url = {https://doi.org/10.1038/s41586-024-08435-4},
+  pages = {522--531}
+}
+```
 
 ### Related MaSIF methods and applications
 
-4. **dMaSIF:** Sverrisson, F., Feydy, J., Correia, B. E., and Bronstein, M. M. *Fast End-to-End Learning on Protein Surfaces.* **IEEE/CVF CVPR**, 15272–15281 (2021). [Paper and official BibTeX](https://openaccess.thecvf.com/content/CVPR2021/html/Sverrisson_Fast_End-to-End_Learning_on_Protein_Surfaces_CVPR_2021_paper.html).
-5. **Physics-informed docking with dMaSIF:** Sverrisson, F., Feydy, J., Southern, J., Bronstein, M. M., and Correia, B. *Physics-informed deep neural network for rigid-body protein docking.* **Machine Learning for Drug Discovery Workshop at ICLR (MLDD)** (2022). [Paper](https://openreview.net/forum?id=5yn5shS6wN).
-6. **DiffMaSIF:** Sverrisson, F., et al. *DiffMaSIF: Surface-based Protein-Protein Docking with Diffusion Models.* **Machine Learning for Structural Biology Workshop at NeurIPS (MLSB)** (2023). [Paper](https://www.mlsb.io/papers_2023/DiffMaSIF_Surface-based_Protein-Protein_Docking_with_Diffusion_Models.pdf).
-7. **Human surfaceome / SURFACE-Bind application:** Balbi, P. E. M., et al. *Mapping targetable sites on the human surfaceome for the design of novel binders.* **PNAS 123**(5), e2506269123 (2026). [DOI: 10.1073/pnas.2506269123](https://doi.org/10.1073/pnas.2506269123).
+The papers below provide further reading. MaSIF-mimicry, dMaSIF,
+physics-informed docking, DiffMaSIF and SURFACE-Bind are separate methods or
+applications; their workflows are not included in this repository.
 
-The related methods and applications above provide further reading; dMaSIF, physics-informed docking, DiffMaSIF, and SURFACE-Bind are not implemented by this repository.
+#### MaSIF-mimicry and the CRBN interactome
 
-Please cite the original methods for the applications you use. Full author lists and BibTeX entries for all seven papers are available in [citation.bib](citation.bib). This implementation retains the upstream Apache 2.0 license.
+[Paper](https://www.nature.com/articles/s41587-026-03237-7)
+
+```bibtex
+@article{galli2026crbn,
+  title = {Proteome-wide identification of the druggable {CRBN} interactome},
+  author = {Galli, Pius and Xiao, Shuhao and Meng, Yanxiang and Hanzl, Alexander and Bendel, Alexandra M. and Baur, Regina and Aguirre, Jacob D. and Diaz-Rovira, Anna M. and Stammnitz, Maximilian R. and Kempf, Georg and Kater, Lukas and Shimada, Kenji and Wei, Ye and Scheck, Andreas and Klein, Dominique and Cavadini, Simone and Lehner, Ben and Diss, Guillaume and Correia, Bruno E. and Thomä, Nicolas H.},
+  journal = {Nature Biotechnology},
+  year = {2026},
+  doi = {10.1038/s41587-026-03237-7},
+  url = {https://www.nature.com/articles/s41587-026-03237-7}
+}
+```
+
+#### dMaSIF
+
+[Paper](https://openaccess.thecvf.com/content/CVPR2021/html/Sverrisson_Fast_End-to-End_Learning_on_Protein_Surfaces_CVPR_2021_paper.html)
+
+```bibtex
+@inproceedings{sverrisson2021surfaces,
+  title = {Fast End-to-End Learning on Protein Surfaces},
+  author = {Sverrisson, Freyr and Feydy, Jean and Correia, Bruno E. and Bronstein, Michael M.},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages = {15272--15281},
+  year = {2021},
+  url = {https://openaccess.thecvf.com/content/CVPR2021/html/Sverrisson_Fast_End-to-End_Learning_on_Protein_Surfaces_CVPR_2021_paper.html}
+}
+```
+
+#### Physics-informed docking with dMaSIF
+
+[Paper](https://openreview.net/forum?id=5yn5shS6wN)
+
+```bibtex
+@inproceedings{sverrisson2022physics,
+  title = {Physics-informed deep neural network for rigid-body protein docking},
+  author = {Sverrisson, Freyr and Feydy, Jean and Southern, Joshua and Bronstein, Michael M. and Correia, Bruno},
+  booktitle = {Machine Learning for Drug Discovery Workshop at ICLR (MLDD)},
+  year = {2022},
+  url = {https://openreview.net/forum?id=5yn5shS6wN}
+}
+```
+
+#### DiffMaSIF
+
+[Paper](https://www.mlsb.io/papers_2023/DiffMaSIF_Surface-based_Protein-Protein_Docking_with_Diffusion_Models.pdf)
+
+```bibtex
+@inproceedings{sverrisson2023diffmasif,
+  title = {{DiffMaSIF}: Surface-based Protein-Protein Docking with Diffusion Models},
+  author = {Sverrisson, Freyr and Akdel, Mehmet and Abramson, Dylan and Feydy, Jean and Goncearenco, Alexander and Adeshina, Yusuf and Kovtun, Daniel and Marquet, C{\'e}line and Zhang, Xuejin and Baugher, David and Carpenter, Zachary and Naef, Luca and Bronstein, Michael M. and Correia, Bruno},
+  booktitle = {Machine Learning for Structural Biology Workshop at NeurIPS (MLSB)},
+  year = {2023},
+  url = {https://www.mlsb.io/papers_2023/DiffMaSIF_Surface-based_Protein-Protein_Docking_with_Diffusion_Models.pdf}
+}
+```
+
+#### Human surfaceome and SURFACE-Bind
+
+[Paper](https://doi.org/10.1073/pnas.2506269123)
+
+```bibtex
+@article{balbi2026surfaceome,
+  title = {Mapping targetable sites on the human surfaceome for the design of novel binders},
+  author = {Balbi, Petra E. M. and Sadek, Ahmed and Marchand, Anthony and Yu, Ta-Yi and Damjanovic, Jovan and Georgeon, Sandrine and Schmidt, Joseph and Fulle, Simone and Yang, Che and Khakzad, Hamed and Correia, Bruno E.},
+  journal = {Proceedings of the National Academy of Sciences},
+  volume = {123},
+  number = {5},
+  year = {2026},
+  doi = {10.1073/pnas.2506269123},
+  url = {https://doi.org/10.1073/pnas.2506269123},
+  pages = {e2506269123}
+}
+```
+
+This implementation retains the upstream [Apache 2.0 license](LICENSE).
