@@ -30,24 +30,137 @@ Starting from a protein structure, MaSIF builds a solvent-excluded surface and a
 
 ## Installation
 
-Python 3.12 and Linux are the validated platform. A GPU is useful for neural inference and training; CPU execution is also supported. From this checkout:
+Linux with Python 3.12 is the validated platform. The runtime helper pins Torch
+2.14.1 and supports CPU or a compatible NVIDIA GPU. Prepared neural inputs do not
+require TensorFlow or the original geometry tools.
+
+### Install MaSIF
+
+Clone the repository and create a separate environment:
 
 ```bash
+git clone https://github.com/TianZhuAI4S/MaSIF_torch.git
+cd MaSIF_torch
+conda env create -f environments/masif_torch.yml
+conda activate masif_torch
 python -m pip install .
 masif install-runtime --backend auto
-masif --help
 masif doctor
+python -m pip check
 ```
 
-The installed distribution and command are named `masif`. This checkout has not been published to PyPI: `pip install masif` from the public index is not an installation of this implementation. For an externally supplied wheel, use `pip install /path/to/masif-*.whl`. See [INSTALL.md](INSTALL.md) for CUDA/CPU selection, optional molecular tools, and environment recipes. The runtime installer chooses a wheel from the detected GPU/driver and verifies it in the current Python environment; a local CUDA toolkit is not required.
+Without Conda, replace the two environment commands with:
 
-Surface retrieval and molecular preparation use optional dependencies:
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+```
+
+Then run the same pip/runtime/check commands. The installed distribution and
+primary command are `masif`; `masif_torch` and `masif-torch` compatibility names
+remain available. This implementation has not been published to PyPI:
+`pip install masif` from the public index does not install this repository.
+For a supplied wheel, replace `pip install .` with
+`python -m pip install /path/to/masif-0.2.0-py3-none-any.whl`.
+Use `python -m pip install -e .` for editable development.
+
+### Choose CPU or CUDA
+
+Preview automatic selection without installing anything:
+
+```bash
+masif install-runtime --backend auto --dry-run
+```
+
+Automatic selection uses the visible GPU architecture and NVIDIA driver. It selects
+CPU when no GPU is accessible, CUDA 12.6 for compatible earlier GPU generations,
+or CUDA 13.0 for Blackwell with a sufficiently new driver. Unsupported or mixed
+incompatible GPUs and insufficient drivers produce an error. Explicit choices:
+
+```bash
+masif install-runtime --backend cpu
+masif install-runtime --backend cu126
+masif install-runtime --backend cu130
+```
+
+Choose one backend. CUDA 12.6 requires driver 525.60.13 or newer; CUDA 13.0 requires
+580 or newer. GPU architecture must also be supported. A CUDA toolkit version above
+12.2 alone does not establish compatibility; prebuilt Torch wheels include the
+CUDA runtime and do not require a system toolkit. The helper checks actual device
+calculations after selecting/installing the wheel.
+
+Ordinary pip cannot select dependencies from GPU hardware, so `pip install .` may
+first install its default Torch wheel; the runtime step selects/replaces that
+wheel in the same environment. The validated numerical environment uses
+Torch 2.14.1+cu126, including its CPU backend; other runtime combinations require
+the helper's machine-specific verification.
+
+The optional Conda bootstrap combines environment creation and runtime setup:
+
+```bash
+bash scripts/install.sh auto /path/to/new/masif_torch
+```
+
+The prefix must be new; `cpu`, `cu126` and `cu130` can replace `auto`.
+
+### Optional molecular components
+
+Surface retrieval, PLY/PDB adapters and registration use the `design` extra.
+Ligand preparation and Rosetta input chemistry also use `chemistry`:
 
 ```bash
 python -m pip install '.[design,chemistry]'
 ```
 
-Neural execution on prepared data does not require TensorFlow. Raw surface generation additionally requires the original geometry tools; Rosetta requires separately provided executables and database. Their setup is described in [INSTALL.md](INSTALL.md).
+Use `'.[design]'` if only retrieval/registration is needed. For a supplied wheel,
+use `python -m pip install '/path/to/masif-0.2.0-py3-none-any.whl[design,chemistry]'`.
+The pinned optional versions are declared in `pyproject.toml`.
+
+Raw surface generation additionally needs Reduce, MSMS, PDB2PQR, APBS, multivalue
+and a compatible original PyMesh/geodesic interpreter. Set `legacy_python`,
+`source_root` and external binary paths in the preparation YAML. The validated
+geometry bridge uses an isolated Python 3.6.5/PyMesh 0.2.1 environment; its tools
+are external to the modern Torch environment. PDB2PQR 2.1 uses
+`pdb2pqr_apbs_input: flag`; the later dialect uses `filename`.
+See [raw preparation](USAGE.md#raw-protein-and-proteinligand-surfaces).
+
+Rosetta requires separately provided RosettaScripts, its database, DAlphaBall and
+original protocol files. Configure these and partner/ligand inputs in the Rosetta
+YAML. Python package installation does not install Rosetta.
+See [the Rosetta workflow](USAGE.md#rosetta-relaxation-and-interface-design).
+
+### Read legacy TensorFlow weights or records
+
+Only weight/TFRecord export needs an independent TensorFlow environment:
+
+```bash
+conda env create -f environments/masif_nn.yml
+conda activate masif_nn
+python -c "import tensorflow as tf; print(tf.__version__)"
+python -m pip check
+conda activate masif_torch
+```
+
+The reader uses Python 3.12 and tensorflow-cpu 2.21.0. Saved TF1 graphs run through
+`compat.v1`; the export adapters handle original APIs. The final command returns
+Conda users to Torch for conversion and inference. If using venv instead,
+deactivate the reader environment and run `source .venv/bin/activate` from the
+repository root. The
+[weight guide](USAGE.md#convert-tensorflow-weights) and
+[data conversion guide](USAGE.md#ligand-records-and-coordinates) contain the commands.
+
+### Verify and start
+
+```bash
+masif --help
+masif doctor
+python -m pip check
+masif site --cfg job
+```
+
+These commands inspect installation/configuration. Then follow the application
+examples below with your own weights and input data. Installation checks do not
+certify full benchmark performance or eliminate the numerical limits below.
 
 ## Data preparation and pretrained models
 
@@ -188,7 +301,7 @@ Some original checkpoints contain NaN and are rejected. Independent IPA training
 
 ## Documentation
 
-- [Installation](INSTALL.md)
+- [Installation](#installation)
 - [Detailed usage and weight conversion](USAGE.md)
 - [License](LICENSE) and [BibTeX citation](citation.bib)
 

@@ -1,6 +1,6 @@
 # Detailed MaSIF usage
 
-This guide preserves the detailed preparation, checkpoint conversion, numerical verification, and compatibility commands. Run these commands from the standalone project root. The primary application interface is now `masif` with Hydra configuration; start with the [application README](README.md) and [installation guide](INSTALL.md). The `masif_torch` Python API and existing compatibility commands remain available.
+This guide preserves the detailed preparation, checkpoint conversion, numerical verification, and compatibility commands. Run these commands from the standalone project root. The primary application interface is now `masif` with Hydra configuration; start with the [application README](README.md) and [installation instructions](README.md#installation). The `masif_torch` Python API and existing compatibility commands remain available.
 
 MaSIF (Molecular Surface Interaction Fingerprints) learns interaction patterns from molecular surface geometry and chemistry. This standalone project provides PyTorch MaSIF-site, MaSIF-search, MaSIF-ligand, the second-stage ScoreNN, and the IPA alignment network used by MaSIF-seed and MaSIF-neosurf. It includes training, recovery, inference, legacy-weight conversion, prepared-surface retrieval, registration, scoring, and numerical audits.
 
@@ -46,68 +46,16 @@ The original-source IPA audit passes inference, loss, single-step gradients, BN 
 
 ## Requirements and installation
 
-Validated on 2026-10-10: Linux x86_64, Python 3.12.15, NVIDIA L40S, driver 560.35.03.
-
-| Environment | Validated versions | Purpose |
-|---|---|---|
-| `masif_torch` | Torch 2.14.1+cu126, NumPy 2.5.3, SciPy 1.18.1 | Train, predict, convert exported NPZ weights, validate |
-| `masif_nn` | Python 3.12, tensorflow-cpu 2.21.0 | Read TF checkpoints/TFRecords and generate references |
-| Optional design extra | Open3D 0.19.0, Biopython 1.88, plyfile 1.1.5 | Modern registration, PLY input, PDB output |
-| Optional chemistry extra | RDKit 2026.9.1, openbabel-wheel 3.1.1.23, ProDy 2.6.1, scikit-learn 1.9.1, Biopython 1.88 | Raw ligand / Rosetta input preparation |
-
-Prepared-array NN execution needs no TensorFlow, PyMesh, APBS, or system CUDA toolkit. GPU wheels include CUDA runtime libraries and require a compatible driver. CPU execution was tested on the CUDA wheel's CPU backend; a separate pure CPU wheel environment and other operating systems have not been fully audited.
-
-### Get the project and install
-
-Clone this standalone repository and run commands from its root:
-
-```bash
-git clone https://github.com/TianZhuAI4S/MaSIF_torch.git
-cd MaSIF_torch
-```
-
-This repository is a standalone PyTorch implementation and has not been published to PyPI. Keep an original checkout separately for weights/source/geometry:
+Follow the [README installation instructions](README.md#installation) for the
+Torch environment, CPU/CUDA selection, optional molecular dependencies and the
+separate TensorFlow reader. The commands in this guide use the Conda names
+`masif_torch` and `masif_nn`; substitute your environment activation if using venv.
+Run application commands from the repository root. Keep the original MaSIF checkout
+separately when reading its weights/source or using its geometry routines:
 
 ```bash
 git clone https://github.com/LPDI-EPFL/masif.git ../masif
 ```
-
-GPU runtime:
-
-```bash
-conda env create -f environments/masif_torch.yml
-conda activate masif_torch
-python -m pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cu126
-python -m pip install -r environments/runtime-requirements.txt
-python -m pip install -e .
-python -m masif_torch doctor
-```
-
-For CPU, replace the Torch line with:
-
-```bash
-python -m pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
-```
-
-Alternatively, the installation helper accepts `cpu` or `cu126` and an optional **new** environment prefix:
-
-```bash
-bash scripts/install.sh cu126 /path/to/new/masif_torch
-```
-
-`doctor` reports versions, GPU availability, and `tensorflow_installed` (expected `false` in the target environment). Use `--device cuda` for GPU; NN commands otherwise default to CPU.
-
-Legacy conversion and optional design setup:
-
-```bash
-conda env create -f environments/masif_nn.yml
-conda activate masif_nn
-python -c "import tensorflow as tf; print(tf.__version__)"
-conda activate masif_torch
-python -m pip install -e '.[design]' --index-url https://pypi.org/simple
-```
-
-TF `compat.v1` executes saved `.meta` graphs. TF2 has no `tf.contrib`; use these tools rather than invoking all original TF1 training scripts directly. Portable installation recipes are included in `environments/*.yml` and `environments/runtime-requirements.txt`. Optional machine-specific audit snapshots (`environments/*.lock.txt`) are kept locally and excluded from Git publication. Install the chosen Torch wheel first and local project separately; CUDA snapshots describe Linux CUDA, not CPU/cross-platform recipes. If inherited pip mirrors interfere, prefix the affected command with `PIP_CONFIG_FILE=/dev/null PIP_EXTRA_INDEX_URL=''` and specify the intended index. See [INSTALL.md](INSTALL.md).
 
 ## Input data and preparation
 
