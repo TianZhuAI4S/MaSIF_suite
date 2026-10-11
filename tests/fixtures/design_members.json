@@ -1,0 +1,398 @@
+{
+  "source_record": "https://zenodo.org/records/14225758",
+  "source_url": "https://zenodo.org/records/14225758/files/masif-neosurf-benchmark-dataset.zip?download=1",
+  "archive_size": 9961569979,
+  "declared_archive_md5": "2b45977254f45c6e229390cc62f3685d",
+  "full_archive_checksum_verified": false,
+  "member_crc32_verified": true,
+  "wrapped_offsets_recovered_in_archive_order": true,
+  "files": [
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/output/all_feat_3l/pred_surfaces/2GKW_B.ply",
+      "size": 72231,
+      "compressed_size": 31176,
+      "offset": 24332662,
+      "crc32": 3264609109,
+      "zipfile_offset": 8614267254,
+      "sha256": "88ec07488776082be6e8a8b5e0de3c52ee287a4f7041810a95679b7cd7ed69db"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/output/all_feat_3l/pred_data/pred_2GKW_B.npy",
+      "size": 2788,
+      "compressed_size": 2471,
+      "offset": 39368925,
+      "crc32": 74904546,
+      "zipfile_offset": 8629303517,
+      "sha256": "915e84ebfc1481e6516799078c41a9aa8f37b031bc5cf2e08c1f457b20f8ee67"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04b-precomputation_12A/precomputation/2GKW_B/p1_X.npy",
+      "size": 5448,
+      "compressed_size": 3707,
+      "offset": 1112300234,
+      "crc32": 3131878695,
+      "zipfile_offset": 9702234826,
+      "sha256": "fcdfd56d06a103ba85e241e75626e0d4d27018ea8628803006e02ab786696ea7"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04b-precomputation_12A/precomputation/2GKW_B/p1_rho_wrt_center.npy",
+      "size": 1064128,
+      "compressed_size": 903998,
+      "offset": 1112304108,
+      "crc32": 245501503,
+      "zipfile_offset": 9702238700,
+      "sha256": "eb9396bf66f9a4ed70d885daf6aafa860f9193a6d24b8b8501d5243675c5fee4"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04b-precomputation_12A/precomputation/2GKW_B/p1_Z.npy",
+      "size": 5448,
+      "compressed_size": 3820,
+      "offset": 1113208286,
+      "crc32": 1200583956,
+      "zipfile_offset": 9703142878,
+      "sha256": "2a284753f99ff3eb204216a853918f11cba021ef23517f856323c92134a9ae17"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04b-precomputation_12A/precomputation/2GKW_B/p1_iface_labels.npy",
+      "size": 5448,
+      "compressed_size": 303,
+      "offset": 1113212273,
+      "crc32": 4276119947,
+      "zipfile_offset": 9703146865,
+      "sha256": "f0a5cf52be29c635db53a64c287a6ea0eaf369ff532d53854860924a1876c7d8"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04b-precomputation_12A/precomputation/2GKW_B/p1_theta_wrt_center.npy",
+      "size": 1064128,
+      "compressed_size": 373829,
+      "offset": 1113212754,
+      "crc32": 1074117403,
+      "zipfile_offset": 9703147346,
+      "sha256": "a5c05bb0704858fd5080f202b046ed1de30e6f46afd422bb60f385cd2e6e01dd"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04b-precomputation_12A/precomputation/2GKW_B/p1_Y.npy",
+      "size": 5448,
+      "compressed_size": 3739,
+      "offset": 1113586765,
+      "crc32": 603766518,
+      "zipfile_offset": 9703521357,
+      "sha256": "74eac5120196b63e7631770835dd2d10879bd451482c5613a97b9294b4b222b6"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04b-precomputation_12A/precomputation/2GKW_B/p1_input_feat.npy",
+      "size": 5320128,
+      "compressed_size": 2228311,
+      "offset": 1113590671,
+      "crc32": 3623516574,
+      "zipfile_offset": 9703525263,
+      "sha256": "f969c11a4408a8d7bc956446ece8bcb1ee0349dbe97d66034169cb6e39dc70c6"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04b-precomputation_12A/precomputation/2GKW_B/p1_list_indices.npy",
+      "size": 326032,
+      "compressed_size": 192651,
+      "offset": 1115819158,
+      "crc32": 911211050,
+      "zipfile_offset": 9705753750,
+      "sha256": "f7d6c40fe0b23185f0db0901fe2da07bdee9cca6188f67d03e7a0d0b2f5f441f"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04b-precomputation_12A/precomputation/2GKW_B/p1_mask.npy",
+      "size": 1064128,
+      "compressed_size": 3198,
+      "offset": 1116011987,
+      "crc32": 4215360936,
+      "zipfile_offset": 9705946579,
+      "sha256": "6bf6e40e7e41137e935c60b375a1eb0fa6e79b0348c5a444157dbbd043ab1658"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/01-benchmark_pdbs/2GKW_B.pdb",
+      "size": 19367,
+      "compressed_size": 4683,
+      "offset": 5996578912,
+      "crc32": 248265037,
+      "zipfile_offset": 10291546208,
+      "sha256": "eaa5633e5258fcb84f407f47c5d88ac4e0dae589b1cae2b9c88707efceb75f79"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/01-benchmark_surfaces/2GKW_B.ply",
+      "size": 67649,
+      "compressed_size": 28893,
+      "offset": 6040418328,
+      "crc32": 1414393795,
+      "zipfile_offset": 10335385624,
+      "sha256": "361600cbe7fcb444016c6e08246ad2608e86c2ebff644c4bae288f35d9f5007a"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04a-precomputation_9A/precomputation/2GKW_B/p1_X.npy",
+      "size": 5448,
+      "compressed_size": 3707,
+      "offset": 6596710775,
+      "crc32": 3131878695,
+      "zipfile_offset": 10891678071,
+      "sha256": "fcdfd56d06a103ba85e241e75626e0d4d27018ea8628803006e02ab786696ea7"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04a-precomputation_9A/precomputation/2GKW_B/p1_rho_wrt_center.npy",
+      "size": 532128,
+      "compressed_size": 468698,
+      "offset": 6596714648,
+      "crc32": 2057089370,
+      "zipfile_offset": 10891681944,
+      "sha256": "2dec77c6879ed26a9a658d0443df07f59f1529a3276e4ce342a0bae46ace74bf"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04a-precomputation_9A/precomputation/2GKW_B/p1_Z.npy",
+      "size": 5448,
+      "compressed_size": 3820,
+      "offset": 6597183525,
+      "crc32": 1200583956,
+      "zipfile_offset": 10892150821,
+      "sha256": "2a284753f99ff3eb204216a853918f11cba021ef23517f856323c92134a9ae17"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04a-precomputation_9A/precomputation/2GKW_B/p1_iface_labels.npy",
+      "size": 5448,
+      "compressed_size": 303,
+      "offset": 6597187511,
+      "crc32": 4276119947,
+      "zipfile_offset": 10892154807,
+      "sha256": "f0a5cf52be29c635db53a64c287a6ea0eaf369ff532d53854860924a1876c7d8"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04a-precomputation_9A/precomputation/2GKW_B/p1_theta_wrt_center.npy",
+      "size": 532128,
+      "compressed_size": 198825,
+      "offset": 6597187991,
+      "crc32": 1991375992,
+      "zipfile_offset": 10892155287,
+      "sha256": "dbd73759e5d235f6cac3e921a4b6123d4b8c8fd9210690e31d25d6ca999eb819"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04a-precomputation_9A/precomputation/2GKW_B/p1_Y.npy",
+      "size": 5448,
+      "compressed_size": 3739,
+      "offset": 6597386997,
+      "crc32": 603766518,
+      "zipfile_offset": 10892354293,
+      "sha256": "74eac5120196b63e7631770835dd2d10879bd451482c5613a97b9294b4b222b6"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04a-precomputation_9A/precomputation/2GKW_B/p1_input_feat.npy",
+      "size": 2660128,
+      "compressed_size": 1155105,
+      "offset": 6597390902,
+      "crc32": 842082314,
+      "zipfile_offset": 10892358198,
+      "sha256": "24f2f0684f313cb5a81ec0f843f05ca562ad2b799ed3745391e28047e8680b6b"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04a-precomputation_9A/precomputation/2GKW_B/p1_list_indices.npy",
+      "size": 174129,
+      "compressed_size": 102399,
+      "offset": 6598546182,
+      "crc32": 1207659315,
+      "zipfile_offset": 10893513478,
+      "sha256": "f8813880f54438ca0479e4502f2692c0b9f154acee89079c3675ead65c3798cd"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/data_preparation/04a-precomputation_9A/precomputation/2GKW_B/p1_mask.npy",
+      "size": 532128,
+      "compressed_size": 1560,
+      "offset": 6598648758,
+      "crc32": 2610019096,
+      "zipfile_offset": 10893616054,
+      "sha256": "d61645fc575861cd258cf9ce640337c9e92f539737cb59d8bd6f506028bb1d78"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/descriptors/sc05/all_feat/2GKW_B/p1_desc_flipped.npy",
+      "size": 212928,
+      "compressed_size": 197725,
+      "offset": 9155369991,
+      "crc32": 1415398596,
+      "zipfile_offset": 9155369991,
+      "sha256": "6612e0623475c4aa31a7aa989564794983ae9bbda71503247421fb8ce3fe2c7a"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/decoys/descriptors/sc05/all_feat/2GKW_B/p1_desc_straight.npy",
+      "size": 212928,
+      "compressed_size": 197653,
+      "offset": 9155567865,
+      "crc32": 1509175666,
+      "zipfile_offset": 9155567865,
+      "sha256": "02e0bbfdfa45df1cdfce47bbbc243da4a3e13384ab2c75d6e9cea806e68f9ed5"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/with_ligand/output/all_feat_3l/pred_surfaces/1A7X_A.ply",
+      "size": 287156,
+      "compressed_size": 121393,
+      "offset": 9539512880,
+      "crc32": 2230761566,
+      "zipfile_offset": 9539512880,
+      "sha256": "f04c63fde4494d9a104a189f0015102395bab661fd88933800fd34a172dfd021"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/with_ligand/output/all_feat_3l/pred_surfaces/1A7X_B.ply",
+      "size": 268463,
+      "compressed_size": 113697,
+      "offset": 9541107360,
+      "crc32": 2053264722,
+      "zipfile_offset": 9541107360,
+      "sha256": "4ac45988eaa17f15cb887c3a0cd441cca71f7d9429632bd2a6bc4949721d3939"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/with_ligand/output/all_feat_3l/pred_data/pred_1A7X_A.npy",
+      "size": 10336,
+      "compressed_size": 9193,
+      "offset": 9543918933,
+      "crc32": 2568729727,
+      "zipfile_offset": 9543918933,
+      "sha256": "2a4ef83c842f80624ba55d6fad0e9158deb09e4f306094b1db6ac00453cefbd3"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/with_ligand/output/all_feat_3l/pred_data/pred_1A7X_B.npy",
+      "size": 9700,
+      "compressed_size": 8617,
+      "offset": 9544221448,
+      "crc32": 3806143144,
+      "zipfile_offset": 9544221448,
+      "sha256": "8f05dab804c1fface3920a7ca41d9d2c0c5e283adea1d714227c65312674e2d7"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/with_ligand/data_preparation/04b-precomputation_12A/precomputation/1A7X_A/p1_list_indices.npy",
+      "size": 1452151,
+      "compressed_size": 935653,
+      "offset": 9610880755,
+      "crc32": 3779081409,
+      "zipfile_offset": 9610880755,
+      "sha256": "57349d51cbca07a91e437d4276a37d424e2418325fdfdbcc9728d518f94b010d"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/with_ligand/data_preparation/04b-precomputation_12A/precomputation/1A7X_B/p1_list_indices.npy",
+      "size": 1353950,
+      "compressed_size": 868764,
+      "offset": 9652986244,
+      "crc32": 2318822615,
+      "zipfile_offset": 9652986244,
+      "sha256": "5b908cb69d282e8d566568ef80c55aa9eb8bf0495e0d984e2f32f394ed52f7a3"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/with_ligand/data_preparation/01-benchmark_pdbs/1A7X_A.pdb",
+      "size": 146700,
+      "compressed_size": 35416,
+      "offset": 9655225337,
+      "crc32": 1831347446,
+      "zipfile_offset": 9655225337,
+      "sha256": "175744dad0cc0f5469dc9432f2c011800dd463bb9cb253f439026116c4425047"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/with_ligand/data_preparation/01-benchmark_pdbs/1A7X_B.pdb",
+      "size": 146618,
+      "compressed_size": 35349,
+      "offset": 9655429777,
+      "crc32": 1961157397,
+      "zipfile_offset": 9655429777,
+      "sha256": "0a866a837acfba7c32010c1c98e6db7e19f8106339f46a087d5854fe2a5148c6"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/with_ligand/data_preparation/01-benchmark_surfaces/1A7X_A.ply",
+      "size": 269184,
+      "compressed_size": 112463,
+      "offset": 9657564434,
+      "crc32": 3008123098,
+      "zipfile_offset": 9657564434,
+      "sha256": "3a1568f5f7657cf3fc901e78e775b246c2c26910fc7b9d55b7d37cff46a331b3"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/with_ligand/data_preparation/01-benchmark_surfaces/1A7X_B.ply",
+      "size": 251734,
+      "compressed_size": 105285,
+      "offset": 9659043892,
+      "crc32": 1841327821,
+      "zipfile_offset": 9659043892,
+      "sha256": "da8099e48df36846543024ab5723a2e71d68169c6552cd33a07cebf364da049f"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/with_ligand/descriptors/sc05/all_feat/1A7X_A/p1_desc_flipped.npy",
+      "size": 816768,
+      "compressed_size": 758032,
+      "offset": 9701071549,
+      "crc32": 2241074730,
+      "zipfile_offset": 9701071549,
+      "sha256": "1c6f1069057c7804f2e97f33325152459b661b5071ca318d2cb056f8609eed71"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/with_ligand/descriptors/sc05/all_feat/1A7X_B/p1_desc_flipped.npy",
+      "size": 765888,
+      "compressed_size": 710687,
+      "offset": 9732294755,
+      "crc32": 3510976308,
+      "zipfile_offset": 9732294755,
+      "sha256": "dbe7acc01e2d6506ed1b862ecc7cf06868941042c7d24b4e1bb056d310c2da37"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/without_ligand/output/all_feat_3l/pred_surfaces/1A7X_A.ply",
+      "size": 252863,
+      "compressed_size": 106864,
+      "offset": 9734705521,
+      "crc32": 1890742009,
+      "zipfile_offset": 9734705521,
+      "sha256": "71ec26ed8341393fe5eaf5643af76f15227ab025884ebcf20584c6cf1e4f6c17"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/without_ligand/output/all_feat_3l/pred_surfaces/1A7X_B.ply",
+      "size": 262777,
+      "compressed_size": 111081,
+      "offset": 9736278785,
+      "crc32": 2781502857,
+      "zipfile_offset": 9736278785,
+      "sha256": "e917ab74c1e517f759b10a512a1171fb0421caec03d49f538d7130fa0ba5d1e8"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/without_ligand/output/all_feat_3l/pred_data/pred_1A7X_A.npy",
+      "size": 9136,
+      "compressed_size": 8072,
+      "offset": 9739065829,
+      "crc32": 2254649031,
+      "zipfile_offset": 9739065829,
+      "sha256": "1bb70353dcf44ff49177c1809493a3a1380d9e881d834576003daaa35ab0b11f"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/without_ligand/output/all_feat_3l/pred_data/pred_1A7X_B.npy",
+      "size": 9516,
+      "compressed_size": 8468,
+      "offset": 9739365305,
+      "crc32": 392072244,
+      "zipfile_offset": 9739365305,
+      "sha256": "cb74a19c234712aaaec8c6054c4418b6db1c4ce94fb17e743e6f636d33d8cd8a"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/without_ligand/data_preparation/04b-precomputation_12A/precomputation/1A7X_A/p1_list_indices.npy",
+      "size": 1276716,
+      "compressed_size": 814770,
+      "offset": 9805210569,
+      "crc32": 1300485617,
+      "zipfile_offset": 9805210569,
+      "sha256": "98441cfe2489fa219bc70d944d288250f5a1ac474bdaeeac272a4f6b10777c40"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/without_ligand/data_preparation/04b-precomputation_12A/precomputation/1A7X_B/p1_list_indices.npy",
+      "size": 1333576,
+      "compressed_size": 852682,
+      "offset": 9847032371,
+      "crc32": 2525314437,
+      "zipfile_offset": 9847032371,
+      "sha256": "640a52a8bd12a716fae05c7b3d5999c62d79da439caeda2f05a8be97c28251ae"
+    },
+    {
+      "path": "masif-neosurf-benchmark-dataset/without_ligand/data_preparation/01-benchmark_pdbs/1A7X_B.pdb",
+      "size": 135035,
+      "compressed_size": 32514,
+      "offset": 9849423124,
+      "crc32": 2820916198,
+      "zipfile_offset": 9849423124,
+      "sha256": "8a4752e5701b21d617787cb2bb4d7e72e20e3ccfcdb98626ec5fed7ed4a23cfa"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+task: ppi_search
+checkpoint: weights/search/surface_descriptors_historical.pt
+input: /path/to/packet.npz
+output: results/search.npy
+device: cpu
+batch_size: 100
+seed: 0

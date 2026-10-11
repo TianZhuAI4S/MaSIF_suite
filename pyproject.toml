@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "masif"
+version = "0.2.0"
+description = "MaSIF, MaSIF-seed and MaSIF-neosurface with PyTorch and Hydra"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.12"
+dependencies = ["torch==2.14.1", "numpy>=2,<3", "scipy>=1.18,<2", "hydra-core>=1.3.7,<1.4"]
+
+[project.optional-dependencies]
+design = ["open3d==0.19.0", "biopython==1.88", "plyfile==1.1.5"]
+chemistry = ["rdkit==2026.9.1", "openbabel-wheel==3.1.1.23", "prody==2.6.1",
+             "biopython==1.88", "scikit-learn==1.9.1"]
+
+[project.scripts]
+masif = "masif_torch.entrypoint:main"
+masif-torch = "masif_torch.entrypoint:main"
+
+[tool.setuptools]
+package-dir = {masif_torch = "src", masif = "src/api"}
+packages = [
+  "masif", "masif_torch", "masif_torch.conf", "masif_torch.shared", "masif_torch.shared.design", "masif_torch.tasks",
+  "masif_torch.tasks.site", "masif_torch.tasks.search", "masif_torch.tasks.ligand",
+  "masif_torch.tasks.score", "masif_torch.tasks.alignment", "masif_torch.tasks.seed",
+  "masif_torch.tasks.neosurface", "masif_torch.tasks.preparation",
+  "masif_torch.tasks.rosetta", "masif_torch.tasks.benchmark",
+]
+
+[tool.setuptools.package-data]
+"masif_torch.conf" = ["*.yaml", "**/*.yaml", "*.yml", "**/*.yml"]

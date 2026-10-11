@@ -1,0 +1,21 @@
+defaults:
+  - task: preparation
+  - _self_
+pdb: ???
+source_root: ???
+legacy_python: ???
+identifier: ???
+output: results/preparation
+site_checkpoint: null
+search_checkpoint: null
+precompute:
+- site
+- ppi_search
+environment:
+  MSMS_BIN: ???
+  PDB2PQR_BIN: ???
+  APBS_BIN: ???
+  MULTIVALUE_BIN: ???
+  PATH: ${oc.env:PATH}
+ligand: ???
+sdf: ???

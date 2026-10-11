@@ -1,0 +1,7 @@
+task: benchmark
+dataset: artifacts/benchmark_full/dataset
+definition: artifacts/upstream_repos/masif-neosurf/computational_benchmark/benchmark_pdbs.txt
+checkpoint: weights/neosurface/ipa_12A_surface_atom.pt
+output: artifacts/benchmark_full/run
+workers: 16
+resume: true

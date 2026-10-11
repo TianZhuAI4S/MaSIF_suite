@@ -1,0 +1,44 @@
+{
+  "backend": "cu126",
+  "gpu_detection": [
+    {
+      "index": "0",
+      "uuid": "GPU-e4bb78ad-760a-dd24-b71f-0e87fd117e8f",
+      "driver": [
+        560,
+        35,
+        3
+      ],
+      "capability": [
+        8,
+        9,
+        0
+      ],
+      "name": "NVIDIA L40S"
+    }
+  ],
+  "command": [
+    "/home/tian/miniconda3/envs/masif_torch/bin/python",
+    "-m",
+    "pip",
+    "install",
+    "--upgrade",
+    "torch==2.14.1+cu126",
+    "--index-url",
+    "https://download.pytorch.org/whl/cu126"
+  ],
+  "dry_run": false,
+  "compatibility": "Wheel selection uses driver and GPU architecture; validation checks actual kernels.",
+  "installed": false,
+  "validation": {
+    "version": "2.14.1+cu126",
+    "cuda": "12.6",
+    "devices": [
+      {
+        "device": "cuda:0",
+        "gpu": "NVIDIA L40S"
+      }
+    ],
+    "kernel_checks_passed": true
+  }
+}

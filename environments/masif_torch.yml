@@ -1,0 +1,6 @@
+name: masif_torch
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - pip

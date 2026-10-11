@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "legacy_examples_yaml_exact": {
+    "alignment": true,
+    "benchmark": true,
+    "neosurf": true,
+    "preparation_ligand": true,
+    "preparation_protein": true,
+    "rosetta_1a7x": true,
+    "rosetta_prepared": true,
+    "seed": true
+  },
+  "examples_yaml_count": 18,
+  "training": {
+    "fresh_checkpoint_exact": true,
+    "model_tensors": 56,
+    "fresh_history": [
+      {
+        "epoch": 0,
+        "step": 1,
+        "training_loss": 0.8347579836845398
+      }
+    ],
+    "seed": 5,
+    "resumed_checkpoint_exact": true,
+    "resumed_history": [
+      {
+        "epoch": 0,
+        "step": 1,
+        "training_loss": 0.8347579836845398
+      },
+      {
+        "epoch": 1,
+        "step": 2,
+        "training_loss": 0.4378397464752197
+      }
+    ]
+  },
+  "comparison_scope": "Original argument frontend and composed Hydra frontend; complete native checkpoint values including model buffers/parameters, Adam moments, history, class weights, epoch/step/seed and Torch RNG. JSON reports/checkpoint metadata are retained.",
+  "numerical_scope": "Configuration frontend comparison within existing Torch implementation; TensorFlow/modern PyTorch tolerance and independent IPA training limitations remain unchanged."
+}

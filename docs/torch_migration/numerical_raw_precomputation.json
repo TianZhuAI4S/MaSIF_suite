@@ -1,0 +1,141 @@
+{
+  "passed": true,
+  "checks": {
+    "site/p1_X.npy": {
+      "shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "site/p1_Y.npy": {
+      "shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "site/p1_Z.npy": {
+      "shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "site/p1_iface_labels.npy": {
+      "shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "site/p1_input_feat.npy": {
+      "shape": [
+        2253,
+        100,
+        5
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "site/p1_list_indices.npy": {
+      "shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": null
+    },
+    "site/p1_mask.npy": {
+      "shape": [
+        2253,
+        100
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "site/p1_rho_wrt_center.npy": {
+      "shape": [
+        2253,
+        100
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "site/p1_theta_wrt_center.npy": {
+      "shape": [
+        2253,
+        100
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "search/p1_X.npy": {
+      "shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "search/p1_Y.npy": {
+      "shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "search/p1_Z.npy": {
+      "shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "search/p1_iface_labels.npy": {
+      "shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "search/p1_input_feat.npy": {
+      "shape": [
+        2253,
+        200,
+        5
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "search/p1_list_indices.npy": {
+      "shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": null
+    },
+    "search/p1_mask.npy": {
+      "shape": [
+        2253,
+        200
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "search/p1_rho_wrt_center.npy": {
+      "shape": [
+        2253,
+        200
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "search/p1_theta_wrt_center.npy": {
+      "shape": [
+        2253,
+        200
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    }
+  }
+}

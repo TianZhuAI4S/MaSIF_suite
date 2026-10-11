@@ -1,0 +1,287 @@
+format_version: 1
+models:
+- task: site
+  source: artifacts/checkpoints/site_backup.pt
+  checkpoint: weights/site/interface_prediction_backup.pt
+  purpose: Protein interface prediction; finite three-layer peptides backup.
+  sha256: 0f8072ef232c2f23660704d1eda10a4a10e13d4507c277d6c1267a81239f55a9
+  model_config:
+    task: site
+    max_rho: 9.0
+    n_thetas: 4
+    n_rhos: 3
+    n_rotations: 4
+    feat_mask:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    n_conv_layers: 3
+- task: search
+  source: artifacts/checkpoints/ppi_search_historical.pt
+  checkpoint: weights/search/surface_descriptors_historical.pt
+  purpose: Surface descriptors; pinned historical upstream revision 51e5422.
+  sha256: a21001a976749b8f4839fdc4a981a54fa00f4938791ae2ccfae67a08722b82ba
+  model_config:
+    task: ppi_search
+    max_rho: 12.0
+    n_thetas: 16
+    n_rhos: 5
+    n_rotations: 16
+    feat_mask:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+- task: ligand
+  source: artifacts/checkpoints/ligand.pt
+  checkpoint: weights/ligand/pocket_classification.pt
+  purpose: Seven-class ligand pocket classification with all surface features.
+  sha256: a51c2530c4a97faacba98eef34b0614973c3b21e5789558ae496282f81e39ea0
+  model_config:
+    task: ligand
+    max_rho: 12.0
+    n_thetas: 16
+    n_rhos: 5
+    n_rotations: 16
+    feat_mask:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    n_ligands: 7
+    dropout: 0.0
+- task: score
+  source: artifacts/checkpoints/score.pt
+  checkpoint: weights/score/second_stage_interface_scoring.pt
+  purpose: Original six-layer ScoreNN for second-stage interface scoring.
+  sha256: 08023e3fa6ad738690cd00064d992059aa735e6ac3537937fa2e071b6d442cde
+  model_config:
+    task: score
+- task: seed
+  source: artifacts/design_checkpoints/masif_seed/models_std/weights_12A_012.hdf5/converted.pt
+  checkpoint: weights/seed/ipa_12A_surface.pt
+  purpose: IPA interface scoring with three surface features and 200 points.
+  expected_config:
+    selected_features:
+    - 0
+    - 1
+    - 2
+    max_npoints: 200
+  sha256: 0f8ac595b371e392a3f1844774b0d0f51ff0de26fee7a981545602545db86dcb
+  model_config:
+    task: alignment
+    selected_features:
+    - 0
+    - 1
+    - 2
+    max_npoints: 200
+    n_negatives: 100
+    n_positives: 1
+- task: seed
+  source: artifacts/design_checkpoints/masif_seed/models_std/weights_12A_0129.hdf5/converted.pt
+  checkpoint: weights/seed/ipa_12A_surface_atom.pt
+  purpose: IPA interface scoring with surface and atom-distance features; official
+    workflow default, 200 points.
+  expected_config:
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 200
+  sha256: 6b5587fe9fdf45ea5f94de76682eebc1532c12979c353ae909d26374295fe26f
+  model_config:
+    task: alignment
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 200
+    n_negatives: 100
+    n_positives: 1
+- task: seed
+  source: artifacts/design_checkpoints/masif_seed/models_std/weights_9A_0123.hdf5/converted.pt
+  checkpoint: weights/seed/ipa_9A_surface_atom.pt
+  purpose: IPA interface scoring for 9 Angstrom patches with four features and 100
+    points.
+  expected_config:
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 100
+  sha256: 1fc7deaa3ff037aeb0182bc466a40f272f24cd67b3d588b84a20097e0550ab35
+  model_config:
+    task: alignment
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 100
+    n_negatives: 100
+    n_positives: 1
+- task: seed
+  source: artifacts/design_checkpoints/masif_seed/models_benchmark/weights_seed_benchmark_12A_0123/converted.pt
+  checkpoint: weights/seed/ipa_12A_benchmark.pt
+  purpose: IPA benchmark-training snapshot from the upstream models_benchmark directory;
+    four features, 200 points.
+  expected_config:
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 200
+  sha256: f57111e8be2d74675a21494f109388de9552f6eecbca10055638d812bd24bc24
+  model_config:
+    task: alignment
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 200
+    n_negatives: 100
+    n_positives: 1
+- task: seed
+  source: artifacts/design_checkpoints/masif_seed/models_std/weights_seed_benchmark_12A_0123.hdf5/converted.pt
+  checkpoint: weights/seed/ipa_12A_benchmark_alternative.pt
+  purpose: Distinct IPA benchmark-training snapshot from upstream standard HDF5 weights;
+    four features, 200 points.
+  expected_config:
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 200
+  sha256: e31fef82f19546831665436de24d19495af4396d30d5100bb69d01ed1422a9a4
+  model_config:
+    task: alignment
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 200
+    n_negatives: 100
+    n_positives: 1
+- task: neosurface
+  source: artifacts/design_checkpoints/masif-neosurf/models_std/weights_12A_012.hdf5/converted.pt
+  checkpoint: weights/neosurface/ipa_12A_surface.pt
+  purpose: IPA interface scoring with three surface features and 200 points.
+  expected_config:
+    selected_features:
+    - 0
+    - 1
+    - 2
+    max_npoints: 200
+  sha256: 2d6d9cdad443a09a2d343869e1ae0db389db16f7db659c5a8f31e0d240367d91
+  model_config:
+    task: alignment
+    selected_features:
+    - 0
+    - 1
+    - 2
+    max_npoints: 200
+    n_negatives: 100
+    n_positives: 1
+- task: neosurface
+  source: artifacts/design_checkpoints/masif-neosurf/models_std/weights_12A_0129.hdf5/converted.pt
+  checkpoint: weights/neosurface/ipa_12A_surface_atom.pt
+  purpose: IPA interface scoring with surface and atom-distance features; official
+    workflow default, 200 points.
+  expected_config:
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 200
+  sha256: eb32cd2312135ffc0053e213fd7d483fbe682467da375ce8b3c2d890ff4d2c81
+  model_config:
+    task: alignment
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 200
+    n_negatives: 100
+    n_positives: 1
+- task: neosurface
+  source: artifacts/design_checkpoints/masif-neosurf/models_std/weights_9A_0123.hdf5/converted.pt
+  checkpoint: weights/neosurface/ipa_9A_surface_atom.pt
+  purpose: IPA interface scoring for 9 Angstrom patches with four features and 100
+    points.
+  expected_config:
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 100
+  sha256: fc2faf0d6379bd5e675183fff40a354e0e1f5a9883805ae5622164a29dd2ec5d
+  model_config:
+    task: alignment
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 100
+    n_negatives: 100
+    n_positives: 1
+- task: neosurface
+  source: artifacts/design_checkpoints/masif-neosurf/models_benchmark/weights_seed_benchmark_12A_0123/converted.pt
+  checkpoint: weights/neosurface/ipa_12A_benchmark.pt
+  purpose: IPA benchmark-training snapshot from the upstream models_benchmark directory;
+    four features, 200 points.
+  expected_config:
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 200
+  sha256: 3f284351415de41002a694ed8b3f0bba79c9d9f27f78ca0e9ab81a85a656190b
+  model_config:
+    task: alignment
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 200
+    n_negatives: 100
+    n_positives: 1
+- task: neosurface
+  source: artifacts/design_checkpoints/masif-neosurf/models_std/weights_seed_benchmark_12A_0123.hdf5/converted.pt
+  checkpoint: weights/neosurface/ipa_12A_benchmark_alternative.pt
+  purpose: Distinct IPA benchmark-training snapshot from upstream standard HDF5 weights;
+    four features, 200 points.
+  expected_config:
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 200
+  sha256: 01eaa38c28c96c0f3760edb88ce82ef0a62e46000501c8034863d42b0224d1ed
+  model_config:
+    task: alignment
+    selected_features:
+    - 0
+    - 1
+    - 2
+    - 3
+    max_npoints: 200
+    n_negatives: 100
+    n_positives: 1

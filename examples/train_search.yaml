@@ -1,0 +1,12 @@
+defaults:
+  - /train
+  - override /task: search
+  - override /dataset: search_cache
+  - _self_
+hydra:
+  searchpath:
+    - pkg://masif_torch.conf
+dataset:
+  input: /path/to/training/search_cache
+trainer:
+  output: results/train_search

@@ -1,0 +1,918 @@
+{
+  "scope": "Original AST file-based protein-heavy PDBfloat32 RMSD/iRMSD versus current unrounded transformed float64 coordinates on all accepted native-partner poses in the complete legacy1A7X_A comparison. This records a precision boundary, not numerical equality.",
+  "source": "artifacts/upstream_repos/masif-neosurf/computational_benchmark/analysis_utils.py",
+  "source_sha256": "e4ea8c3b0e9901a9ae8bc69ec321831292438177999d696020747355e8e059d6",
+  "original_functions": [
+    "compute_irmsd",
+    "compute_rmsd",
+    "rmsd"
+  ],
+  "selection_checks": [
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/1A7X_A.pdb",
+      "sha256": "e3167872e3e31821980e628d78a44bea2e243e8dc304be8238e6e4baaaf6e76d",
+      "original_count": 832,
+      "current_count": 832,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/1A7X_B.pdb",
+      "sha256": "8a4752e5701b21d617787cb2bb4d7e72e20e3ccfcdb98626ec5fed7ed4a23cfa",
+      "original_count": 832,
+      "current_count": 832,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/1S9D_A.pdb",
+      "sha256": "7b739d42b69a96ebe7a526c174bb66bf33df30652d63c44fc7faec57926186fe",
+      "original_count": 1253,
+      "current_count": 1253,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/1S9D_E.pdb",
+      "sha256": "8a10080703b38327a11b731a1e739d91c3636523f5ca6a95b3db675e0dca0e16",
+      "original_count": 1577,
+      "current_count": 1577,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/1TCO_AB.pdb",
+      "sha256": "5816ded2878e1f58f017eb3776045e530b3982a94be96fe6bda91bdc01d463f3",
+      "original_count": 4208,
+      "current_count": 4208,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/1TCO_C.pdb",
+      "sha256": "d916a933adebcb0117b2e9da3854676871bf5a71c40e2ac0870e5fb761c62507",
+      "original_count": 826,
+      "current_count": 826,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/3QEL_A.pdb",
+      "sha256": "8a32db742918c8b89d22c3c2c81e4adfd2fff9938dd8b7c43258393085cbd24f",
+      "original_count": 2665,
+      "current_count": 2665,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/3QEL_B.pdb",
+      "sha256": "db1ef2e6856f7e5f0774cc515e4b34f8c6b81e50dd0d9cafbc7184ab9a9206a0",
+      "original_count": 2608,
+      "current_count": 2608,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/4DRI_A.pdb",
+      "sha256": "ba2941a1182c102aeb50222a3d2e22655d9d62fa0d3ce0a6dcd1fda1dc211df0",
+      "original_count": 932,
+      "current_count": 932,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/4DRI_B.pdb",
+      "sha256": "b60e08a15950f000b0d8682ed62493ddc1245327a8e43afae953939d25d2ec44",
+      "original_count": 786,
+      "current_count": 786,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/4MDK_A.pdb",
+      "sha256": "0b0480856d8f7b90ee58649c7beb46cc913aaa37ca6a54f55dda13ed1dedd237",
+      "original_count": 1343,
+      "current_count": 1343,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/4MDK_E.pdb",
+      "sha256": "910121e285c592f1575713d39817fccab5fac0df26c0cf91679343595c2f8091",
+      "original_count": 591,
+      "current_count": 591,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6ENG_A.pdb",
+      "sha256": "3166e959fe03aa89eb706569059735841c259947a9127fa427aa8b9d121476d5",
+      "original_count": 2886,
+      "current_count": 2886,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6ENG_B.pdb",
+      "sha256": "7ee15e0456117155c304112d17cc2b329af7cc41756f1f992103bc2967a4cea0",
+      "original_count": 2935,
+      "current_count": 2935,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6H0F_B.pdb",
+      "sha256": "12bdb1d47d4c092973b320246f93fc5159369b04696338d3aa1d2e28d96b422e",
+      "original_count": 2978,
+      "current_count": 2978,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6H0F_C.pdb",
+      "sha256": "e16aa6731a1d0d363dc0a3c5a0964cfd8797bf20798b55d180520d98a1b5d8ca",
+      "original_count": 244,
+      "current_count": 244,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6N4N_A.pdb",
+      "sha256": "17efeaea0580a8cd0fcfd0e0ea7de22a90e57778049b2f97975cca01eac69c86",
+      "original_count": 1448,
+      "current_count": 1448,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6N4N_F.pdb",
+      "sha256": "5fa63ae9b38f917f501f9030b8219317996e98a30783ce0781e41fb9237fb971",
+      "original_count": 1490,
+      "current_count": 1490,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6OB5_B.pdb",
+      "sha256": "61f2c4c801dae808538c30278043e75da12ab9a7c7241a3a4d9e179e755b4319",
+      "original_count": 2826,
+      "current_count": 2826,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6OB5_D.pdb",
+      "sha256": "003955f6c2641444ac51579c97f8aca2cfc487f5e6d2f9b02cb232226fb79f6a",
+      "original_count": 1128,
+      "current_count": 1128,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6QTL_A.pdb",
+      "sha256": "432c5904d7b5a044584befb036e06510f0843c28213cdc5a577f9948ae0bd8a1",
+      "original_count": 914,
+      "current_count": 914,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6QTL_C.pdb",
+      "sha256": "09970f73acb68aa6a317f3cd91bfe750620baaa932b129b93361d9ae2e788229",
+      "original_count": 915,
+      "current_count": 915,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6SJ7_A.pdb",
+      "sha256": "f05e41045281560fca8eeb0c99ecfca90353b961dd0fe17599b32300c4a678dc",
+      "original_count": 2845,
+      "current_count": 2845,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6SJ7_C.pdb",
+      "sha256": "5afcaccb18ab603e2a5857dee05bd698407af7f1745b8de0b69ea0608b202ef9",
+      "original_count": 619,
+      "current_count": 619,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/7DC8_AB.pdb",
+      "sha256": "a0fcae8d398b602f0728c094533dc55c383cdcf7bbdbd6a7cb009b8b01da1562",
+      "original_count": 3087,
+      "current_count": 3087,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/7DC8_CF.pdb",
+      "sha256": "0d89356bf7069dd67e489e7195b5641dcef705b3c0916f1a8784ad3e7bb8690e",
+      "original_count": 2873,
+      "current_count": 2873,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/7TE8_A.pdb",
+      "sha256": "a224aeda2ac9a3adadc502ffb5fc928ef60fcf6c9b5cec1bd4660644c0c1452a",
+      "original_count": 936,
+      "current_count": 936,
+      "same_selection": true
+    },
+    {
+      "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/7TE8_C.pdb",
+      "sha256": "99d38f797ee3a7065bbee6d3bf85c50229a6199233817492561040c1d5d0ab6b",
+      "original_count": 918,
+      "current_count": 918,
+      "same_selection": true
+    }
+  ],
+  "all_atom_selections_match": true,
+  "native_pose_count": 18,
+  "interface_mask_equal": true,
+  "maximum_absolute_differences": {
+    "rmsd": 3.4894888234660026e-05,
+    "interface_rmsd": 6.350040038660687e-05
+  },
+  "all_recovery_decisions_match": true,
+  "poses": [
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_198.pdb",
+      "pose_sha256": "994d61e343165d767ca6a85d1685a832c5c0babbc75932909527b326727fbd8f",
+      "score": 0.996063768863678,
+      "original_exported_pdb": {
+        "rmsd": 0.4591697156429291,
+        "interface_rmsd": 0.3961281478404999
+      },
+      "current_unrounded": {
+        "rmsd": 0.4591348207546944,
+        "interface_rmsd": 0.3960934403975216
+      },
+      "absolute_difference": {
+        "rmsd": 3.4894888234660026e-05,
+        "interface_rmsd": 3.470744297828787e-05
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_442.pdb",
+      "pose_sha256": "6646d04f5cf1d4f28f0a24f873f4e390bb19ec8e57a0bd2a19a5e18f03a8bf96",
+      "score": 0.9961041212081909,
+      "original_exported_pdb": {
+        "rmsd": 0.6311959028244019,
+        "interface_rmsd": 0.6083108186721802
+      },
+      "current_unrounded": {
+        "rmsd": 0.631192373717571,
+        "interface_rmsd": 0.6082674721812424
+      },
+      "absolute_difference": {
+        "rmsd": 3.5291068308795914e-06,
+        "interface_rmsd": 4.334649093773457e-05
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_526.pdb",
+      "pose_sha256": "e9428bab43f4bf9bd9e87cfd873991e469aa37b1f9f42ca249c4bb49b2626126",
+      "score": 0.9938406944274902,
+      "original_exported_pdb": {
+        "rmsd": 0.9923703670501709,
+        "interface_rmsd": 1.1580793857574463
+      },
+      "current_unrounded": {
+        "rmsd": 0.99236918993076,
+        "interface_rmsd": 1.1580598168403038
+      },
+      "absolute_difference": {
+        "rmsd": 1.1771194109444494e-06,
+        "interface_rmsd": 1.956891714249842e-05
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_735.pdb",
+      "pose_sha256": "0705e675a0bcee36cfa769bac6b3628c5eae1bd189678525910ddccbe5b47460",
+      "score": 0.9968041181564331,
+      "original_exported_pdb": {
+        "rmsd": 0.8292150497436523,
+        "interface_rmsd": 0.8236396312713623
+      },
+      "current_unrounded": {
+        "rmsd": 0.8292277854979695,
+        "interface_rmsd": 0.8236584044418533
+      },
+      "absolute_difference": {
+        "rmsd": 1.2735754317150239e-05,
+        "interface_rmsd": 1.877317049103766e-05
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_751.pdb",
+      "pose_sha256": "0a2a1213aaf61069d0f6a0ceb285150f636e32e29a58a437f861698856efbea5",
+      "score": 0.9950762391090393,
+      "original_exported_pdb": {
+        "rmsd": 0.6399973630905151,
+        "interface_rmsd": 0.6122401356697083
+      },
+      "current_unrounded": {
+        "rmsd": 0.6400002727964881,
+        "interface_rmsd": 0.6122611393920838
+      },
+      "absolute_difference": {
+        "rmsd": 2.909705972942156e-06,
+        "interface_rmsd": 2.100372237556769e-05
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_813.pdb",
+      "pose_sha256": "6e1dab87ab1a160721a0a5766a222bd0e7bd29317d20dd40f7d758c9f7441a2d",
+      "score": 0.9957737326622009,
+      "original_exported_pdb": {
+        "rmsd": 0.881699800491333,
+        "interface_rmsd": 0.7633253931999207
+      },
+      "current_unrounded": {
+        "rmsd": 0.881700647140489,
+        "interface_rmsd": 0.7633888936003073
+      },
+      "absolute_difference": {
+        "rmsd": 8.466491560055189e-07,
+        "interface_rmsd": 6.350040038660687e-05
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_845.pdb",
+      "pose_sha256": "6a543246d2c329ca1e39d9d0d9c35545286d4abfdd1867ab58a97305130959e1",
+      "score": 0.996900200843811,
+      "original_exported_pdb": {
+        "rmsd": 0.6154569387435913,
+        "interface_rmsd": 0.47953224182128906
+      },
+      "current_unrounded": {
+        "rmsd": 0.6154647072513741,
+        "interface_rmsd": 0.47955404195413487
+      },
+      "absolute_difference": {
+        "rmsd": 7.768507782834888e-06,
+        "interface_rmsd": 2.1800132845806175e-05
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1031.pdb",
+      "pose_sha256": "d556c4ba2743d730d479421d40f6561383df4d0773ce3e12f8570d60ccd96750",
+      "score": 0.9945130348205566,
+      "original_exported_pdb": {
+        "rmsd": 0.7645670771598816,
+        "interface_rmsd": 0.9899314045906067
+      },
+      "current_unrounded": {
+        "rmsd": 0.7645526709593451,
+        "interface_rmsd": 0.9899316676676511
+      },
+      "absolute_difference": {
+        "rmsd": 1.4406200536498659e-05,
+        "interface_rmsd": 2.6307704437122936e-07
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1139.pdb",
+      "pose_sha256": "982473a27f03e495e32dc2a4e28ded66f9ab499fab996c5d0a9e7b2e93e52a89",
+      "score": 0.992938220500946,
+      "original_exported_pdb": {
+        "rmsd": 1.0942538976669312,
+        "interface_rmsd": 0.7416196465492249
+      },
+      "current_unrounded": {
+        "rmsd": 1.0942656707918572,
+        "interface_rmsd": 0.7416807951402741
+      },
+      "absolute_difference": {
+        "rmsd": 1.1773124926062195e-05,
+        "interface_rmsd": 6.114859104922044e-05
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1228.pdb",
+      "pose_sha256": "7a0c88d89ee588ad14a628dc7be5b60a9a065ed64ffcc8b2527bdb761edbad15",
+      "score": 0.9947484135627747,
+      "original_exported_pdb": {
+        "rmsd": 1.089598536491394,
+        "interface_rmsd": 1.3023321628570557
+      },
+      "current_unrounded": {
+        "rmsd": 1.0895973639826637,
+        "interface_rmsd": 1.3023245739206972
+      },
+      "absolute_difference": {
+        "rmsd": 1.172508730329369e-06,
+        "interface_rmsd": 7.588936358438048e-06
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1326.pdb",
+      "pose_sha256": "a5a9bdeecdd97a18e7612e17490fad4a6093edee5d499ae1b2c8d0a0381d0933",
+      "score": 0.9952818751335144,
+      "original_exported_pdb": {
+        "rmsd": 0.8023234009742737,
+        "interface_rmsd": 0.9379093647003174
+      },
+      "current_unrounded": {
+        "rmsd": 0.8023233130645554,
+        "interface_rmsd": 0.9379286267323917
+      },
+      "absolute_difference": {
+        "rmsd": 8.79097182826527e-08,
+        "interface_rmsd": 1.9262032074363056e-05
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1582.pdb",
+      "pose_sha256": "c34713e199a1b9185dddf4446037335307df61c427cc0d06f802f2aac8925485",
+      "score": 0.995790421962738,
+      "original_exported_pdb": {
+        "rmsd": 0.5213181972503662,
+        "interface_rmsd": 0.49477726221084595
+      },
+      "current_unrounded": {
+        "rmsd": 0.5213105562446285,
+        "interface_rmsd": 0.4948039319055368
+      },
+      "absolute_difference": {
+        "rmsd": 7.641005737690776e-06,
+        "interface_rmsd": 2.6669694690839574e-05
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1674.pdb",
+      "pose_sha256": "b17ca850a23ed3587bc631562f84bb880f359d08c2df5c1f7240587ca4c4f4a4",
+      "score": 0.9958425164222717,
+      "original_exported_pdb": {
+        "rmsd": 0.6816740036010742,
+        "interface_rmsd": 0.886259913444519
+      },
+      "current_unrounded": {
+        "rmsd": 0.6816629635632249,
+        "interface_rmsd": 0.886209659078622
+      },
+      "absolute_difference": {
+        "rmsd": 1.104003784935248e-05,
+        "interface_rmsd": 5.0254365897006714e-05
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1721.pdb",
+      "pose_sha256": "09ac1f796e422ab3916d1febd861039125165ae7ed86855b1380b2f51fe77bd8",
+      "score": 0.9951882362365723,
+      "original_exported_pdb": {
+        "rmsd": 0.9461768269538879,
+        "interface_rmsd": 0.9054690003395081
+      },
+      "current_unrounded": {
+        "rmsd": 0.946161579001093,
+        "interface_rmsd": 0.905453854159836
+      },
+      "absolute_difference": {
+        "rmsd": 1.524795279495006e-05,
+        "interface_rmsd": 1.514617967202092e-05
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1983.pdb",
+      "pose_sha256": "d10dd83622c1ad98359c574435cb2dcea9fbcdc8f1c3dfc164eece4ece15ab89",
+      "score": 0.9938806295394897,
+      "original_exported_pdb": {
+        "rmsd": 1.6246346235275269,
+        "interface_rmsd": 1.6942585706710815
+      },
+      "current_unrounded": {
+        "rmsd": 1.6246199154160028,
+        "interface_rmsd": 1.6942210905771296
+      },
+      "absolute_difference": {
+        "rmsd": 1.4708111524042167e-05,
+        "interface_rmsd": 3.748009395199148e-05
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_2036.pdb",
+      "pose_sha256": "2834a3c3f5cbbef4aa50348139201dea5101ab684b1ab9022560877fcea72964",
+      "score": 0.9970711469650269,
+      "original_exported_pdb": {
+        "rmsd": 0.9259398579597473,
+        "interface_rmsd": 0.8645894527435303
+      },
+      "current_unrounded": {
+        "rmsd": 0.9259413037851734,
+        "interface_rmsd": 0.8645822638731974
+      },
+      "absolute_difference": {
+        "rmsd": 1.4458254260496517e-06,
+        "interface_rmsd": 7.188870332908159e-06
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_2062.pdb",
+      "pose_sha256": "a85e09191c8b4c63221066c7eabd7fd3db8f08db9d9beeb145d00240b01d1ec2",
+      "score": 0.9968396425247192,
+      "original_exported_pdb": {
+        "rmsd": 0.8437716960906982,
+        "interface_rmsd": 0.7922106981277466
+      },
+      "current_unrounded": {
+        "rmsd": 0.843764305741757,
+        "interface_rmsd": 0.7922054370041178
+      },
+      "absolute_difference": {
+        "rmsd": 7.3903489412607826e-06,
+        "interface_rmsd": 5.261123628752529e-06
+      },
+      "same_recovery": true
+    },
+    {
+      "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_2068.pdb",
+      "pose_sha256": "1c9cb133bf9778d69ec6afec45fee191b27e8fd9b5820d65f4c3310895517d4d",
+      "score": 0.9953494668006897,
+      "original_exported_pdb": {
+        "rmsd": 0.8845285177230835,
+        "interface_rmsd": 0.8660455942153931
+      },
+      "current_unrounded": {
+        "rmsd": 0.8845296625842113,
+        "interface_rmsd": 0.8660825543231768
+      },
+      "absolute_difference": {
+        "rmsd": 1.1448611277886656e-06,
+        "interface_rmsd": 3.696010778375669e-05
+      },
+      "same_recovery": true
+    }
+  ],
+  "corrected_file_based_validation": {
+    "passed": true,
+    "implementation": "src/tasks/benchmark/workflow.py",
+    "implementation_sha256": "2f128ac48189fb38ad27b04d6f640fd17ea0ed69eba94a4a679188640881a958",
+    "coordinate_selection_checks": [
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/1A7X_A.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/1A7X_B.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/1S9D_A.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/1S9D_E.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/1TCO_AB.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/1TCO_C.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/3QEL_A.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/3QEL_B.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/4DRI_A.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/4DRI_B.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/4MDK_A.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/4MDK_E.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6ENG_A.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6ENG_B.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6H0F_B.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6H0F_C.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6N4N_A.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6N4N_F.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6OB5_B.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6OB5_D.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6QTL_A.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6QTL_C.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6SJ7_A.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/6SJ7_C.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/7DC8_AB.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/7DC8_CF.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/7TE8_A.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      },
+      {
+        "input": "artifacts/benchmark_full/dataset/without_ligand/data_preparation/01-benchmark_pdbs/7TE8_C.pdb",
+        "dtype": "float32",
+        "array_equal": true
+      }
+    ],
+    "pose_count": 18,
+    "pose_metrics": [
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_198.pdb",
+        "original": {
+          "rmsd": 0.4591697156429291,
+          "interface_rmsd": 0.3961281478404999
+        },
+        "current": {
+          "rmsd": 0.4591697156429291,
+          "interface_rmsd": 0.3961281478404999
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_442.pdb",
+        "original": {
+          "rmsd": 0.6311959028244019,
+          "interface_rmsd": 0.6083108186721802
+        },
+        "current": {
+          "rmsd": 0.6311959028244019,
+          "interface_rmsd": 0.6083108186721802
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_526.pdb",
+        "original": {
+          "rmsd": 0.9923703670501709,
+          "interface_rmsd": 1.1580793857574463
+        },
+        "current": {
+          "rmsd": 0.9923703670501709,
+          "interface_rmsd": 1.1580793857574463
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_735.pdb",
+        "original": {
+          "rmsd": 0.8292150497436523,
+          "interface_rmsd": 0.8236396312713623
+        },
+        "current": {
+          "rmsd": 0.8292150497436523,
+          "interface_rmsd": 0.8236396312713623
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_751.pdb",
+        "original": {
+          "rmsd": 0.6399973630905151,
+          "interface_rmsd": 0.6122401356697083
+        },
+        "current": {
+          "rmsd": 0.6399973630905151,
+          "interface_rmsd": 0.6122401356697083
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_813.pdb",
+        "original": {
+          "rmsd": 0.881699800491333,
+          "interface_rmsd": 0.7633253931999207
+        },
+        "current": {
+          "rmsd": 0.881699800491333,
+          "interface_rmsd": 0.7633253931999207
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_845.pdb",
+        "original": {
+          "rmsd": 0.6154569387435913,
+          "interface_rmsd": 0.47953224182128906
+        },
+        "current": {
+          "rmsd": 0.6154569387435913,
+          "interface_rmsd": 0.47953224182128906
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1031.pdb",
+        "original": {
+          "rmsd": 0.7645670771598816,
+          "interface_rmsd": 0.9899314045906067
+        },
+        "current": {
+          "rmsd": 0.7645670771598816,
+          "interface_rmsd": 0.9899314045906067
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1139.pdb",
+        "original": {
+          "rmsd": 1.0942538976669312,
+          "interface_rmsd": 0.7416196465492249
+        },
+        "current": {
+          "rmsd": 1.0942538976669312,
+          "interface_rmsd": 0.7416196465492249
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1228.pdb",
+        "original": {
+          "rmsd": 1.089598536491394,
+          "interface_rmsd": 1.3023321628570557
+        },
+        "current": {
+          "rmsd": 1.089598536491394,
+          "interface_rmsd": 1.3023321628570557
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1326.pdb",
+        "original": {
+          "rmsd": 0.8023234009742737,
+          "interface_rmsd": 0.9379093647003174
+        },
+        "current": {
+          "rmsd": 0.8023234009742737,
+          "interface_rmsd": 0.9379093647003174
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1582.pdb",
+        "original": {
+          "rmsd": 0.5213181972503662,
+          "interface_rmsd": 0.49477726221084595
+        },
+        "current": {
+          "rmsd": 0.5213181972503662,
+          "interface_rmsd": 0.49477726221084595
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1674.pdb",
+        "original": {
+          "rmsd": 0.6816740036010742,
+          "interface_rmsd": 0.886259913444519
+        },
+        "current": {
+          "rmsd": 0.6816740036010742,
+          "interface_rmsd": 0.886259913444519
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1721.pdb",
+        "original": {
+          "rmsd": 0.9461768269538879,
+          "interface_rmsd": 0.9054690003395081
+        },
+        "current": {
+          "rmsd": 0.9461768269538879,
+          "interface_rmsd": 0.9054690003395081
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_1983.pdb",
+        "original": {
+          "rmsd": 1.6246346235275269,
+          "interface_rmsd": 1.6942585706710815
+        },
+        "current": {
+          "rmsd": 1.6246346235275269,
+          "interface_rmsd": 1.6942585706710815
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_2036.pdb",
+        "original": {
+          "rmsd": 0.9259398579597473,
+          "interface_rmsd": 0.8645894527435303
+        },
+        "current": {
+          "rmsd": 0.9259398579597473,
+          "interface_rmsd": 0.8645894527435303
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_2062.pdb",
+        "original": {
+          "rmsd": 0.8437716960906982,
+          "interface_rmsd": 0.7922106981277466
+        },
+        "current": {
+          "rmsd": 0.8437716960906982,
+          "interface_rmsd": 0.7922106981277466
+        },
+        "exact": true
+      },
+      {
+        "pose": "artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A/site_2_1A7X_B_2068.pdb",
+        "original": {
+          "rmsd": 0.8845285177230835,
+          "interface_rmsd": 0.8660455942153931
+        },
+        "current": {
+          "rmsd": 0.8845285177230835,
+          "interface_rmsd": 0.8660455942153931
+        },
+        "exact": true
+      }
+    ],
+    "best_group_summary_equal": true,
+    "metric_precision": "original float32 coordinates parsed from exported 3-decimal PDBs",
+    "partner_hits": [
+      {
+        "rank": 1,
+        "score": 0.9970711469650269,
+        "rmsd": 0.9259398579597473,
+        "interface_rmsd": 0.8645894527435303
+      }
+    ]
+  }
+}

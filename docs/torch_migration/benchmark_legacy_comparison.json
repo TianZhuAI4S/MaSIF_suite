@@ -1,0 +1,127 @@
+{
+  "case": "with_ligand_targets/1A7X_A",
+  "full_case_candidates": 30810,
+  "all_candidate_keys_equal": true,
+  "max_transform_element_difference": 3728.957732846039,
+  "poses_array_equal": false,
+  "legacy": {
+    "condition": "with_ligand_targets",
+    "target": "1A7X_A",
+    "partner": "1A7X_B",
+    "candidates": 30810,
+    "accepted": 53,
+    "sites": [
+      104,
+      475,
+      136
+    ],
+    "ranked_groups": 7,
+    "ranking_unit": "best_pose_per_site_and_source",
+    "metric_precision": "original float32 coordinates parsed from exported 3-decimal PDBs",
+    "partner_hits": [
+      {
+        "rank": 1,
+        "score": 0.9970711469650269,
+        "rmsd": 0.9259398579597473,
+        "interface_rmsd": 0.8645894527435303
+      }
+    ],
+    "recovered": true,
+    "best_recovery_rank": 1
+  },
+  "modern": {
+    "condition": "with_ligand_targets",
+    "target": "1A7X_A",
+    "partner": "1A7X_B",
+    "candidates": 30810,
+    "accepted": 67,
+    "sites": [
+      104,
+      475,
+      136
+    ],
+    "ranked_groups": 7,
+    "ranking_unit": "best_pose_per_site_and_source",
+    "metric_precision": "original float32 coordinates parsed from exported 3-decimal PDBs",
+    "partner_hits": [
+      {
+        "rank": 1,
+        "score": 0.9970069527626038,
+        "rmsd": 0.524872899055481,
+        "interface_rmsd": 0.38568735122680664
+      }
+    ],
+    "recovered": true,
+    "best_recovery_rank": 1
+  },
+  "legacy_runtime": {
+    "python": "3.6.5 (default, Jul  4 2018, 21:08:36) \n[GCC 7.3.0]",
+    "executable": "/work/lpdi/users/gainza/masif/tensorflow-1.12_on_cpu_anthony/bin/python",
+    "numpy": "1.19.4",
+    "open3d": "0.5.0.0",
+    "open3d_module": "/work/lpdi/users/gainza/masif/tensorflow-1.12_on_cpu_anthony/lib/python3.6/site-packages/open3d/__init__.py",
+    "module_sha256": "ae6605ef5035eb9678323cdc2c0514a09626c137f41703b30342bf5b0e2faf4e"
+  },
+  "fixed_pose_neural": {
+    "poses": 53,
+    "features_shape": [
+      53,
+      200,
+      4
+    ],
+    "atol": 1e-05,
+    "rtol": 0.0001,
+    "precision": "FP32; TF32 disabled; deterministic algorithms enabled",
+    "original_registration": "Open3D0.5 RANSAC2000/max_validation500 + ICP1\u00c5",
+    "groups": [
+      {
+        "device": "cpu",
+        "logits": {
+          "shape": [
+            53,
+            2
+          ],
+          "passed": true,
+          "array_equal": false,
+          "max_absolute_error": 3.4570693969726562e-06,
+          "all_finite": true
+        },
+        "probability": {
+          "shape": [
+            53,
+            2
+          ],
+          "passed": true,
+          "array_equal": false,
+          "max_absolute_error": 7.748603820800781e-07,
+          "all_finite": true
+        }
+      },
+      {
+        "device": "cuda",
+        "logits": {
+          "shape": [
+            53,
+            2
+          ],
+          "passed": true,
+          "array_equal": false,
+          "max_absolute_error": 1.430511474609375e-06,
+          "all_finite": true
+        },
+        "probability": {
+          "shape": [
+            53,
+            2
+          ],
+          "passed": true,
+          "array_equal": false,
+          "max_absolute_error": 2.384185791015625e-07,
+          "all_finite": true
+        }
+      }
+    ],
+    "passed": true
+  },
+  "full_original_tensorflow_benchmark": false
+}

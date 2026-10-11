@@ -1,0 +1,7 @@
+task: score
+checkpoint: weights/score/second_stage_interface_scoring.pt
+input: /path/to/packet.npz
+output: results/score.npy
+device: cpu
+batch_size: 100
+seed: 0

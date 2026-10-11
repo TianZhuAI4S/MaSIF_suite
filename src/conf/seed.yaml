@@ -1,0 +1,17 @@
+defaults:
+  - task: seed
+  - _self_
+action: search
+target: ???
+database: ???
+checkpoint: ???
+output: results/seed
+device: cpu
+seed: 42
+num_sites: 1
+registration:
+  mode: open3d
+  iterations: 2000
+  radius: 1.5
+  confidence: 0.999
+  seed: 42

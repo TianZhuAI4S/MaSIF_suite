@@ -1,0 +1,7 @@
+defaults:
+  - task: site
+  - model: ${task}
+  - dataset: packets
+  - trainer: default
+  - _self_
+operation: train

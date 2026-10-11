@@ -1,0 +1,21 @@
+defaults:
+  - task: rosetta
+  - _self_
+target: ???
+target_chains: A
+binder: ???
+binder_chains: B
+ligand: ???
+ligand_chain: ???
+template_sdf: null
+protocol_dir: ???
+binary: ???
+database: ???
+dalphaball: ???
+chemistry_python: ???
+legacy_python: ???
+output: results/rosetta
+seed: 42
+verify_repeat: false
+timeout_seconds: 7200
+ligand_sdf: null

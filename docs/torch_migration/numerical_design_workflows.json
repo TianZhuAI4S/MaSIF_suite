@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "workflows": [
+    {
+      "passed": true,
+      "device": "cpu",
+      "seed_hits": 1,
+      "neosurf_pairs": 1,
+      "outputs": [
+        {
+          "packet": "torch/artifacts/design_smoke/cpu/seed/site_0_2GKW_B_35.npz",
+          "pdb_exists": true
+        },
+        {
+          "packet": "torch/artifacts/design_smoke/cpu/neosurf/site_0_2GKW_B_386.npz",
+          "pdb_exists": true
+        }
+      ],
+      "pose_provenance": "constructed translation, not a saved legacy RANSAC result",
+      "thresholds": "relaxed only for smoke output coverage; no benchmark performance claim"
+    },
+    {
+      "passed": true,
+      "device": "cuda",
+      "seed_hits": 1,
+      "neosurf_pairs": 1,
+      "outputs": [
+        {
+          "packet": "torch/artifacts/design_smoke/cuda/seed/site_0_2GKW_B_35.npz",
+          "pdb_exists": true
+        },
+        {
+          "packet": "torch/artifacts/design_smoke/cuda/neosurf/site_0_2GKW_B_386.npz",
+          "pdb_exists": true
+        }
+      ],
+      "pose_provenance": "constructed translation, not a saved legacy RANSAC result",
+      "thresholds": "relaxed only for smoke output coverage; no benchmark performance claim"
+    }
+  ],
+  "modern_registration": {
+    "passed": true,
+    "max_coordinate_error": 9.325873406851315e-15,
+    "fitness": 1.0,
+    "scope": "modern Open3D functional test; no legacy random pose equivalence"
+  }
+}

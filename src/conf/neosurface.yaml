@@ -1,0 +1,11 @@
+defaults:
+  - task: neosurface
+  - _self_
+action: score
+target: ???
+database: ???
+checkpoint: ???
+output: results/neosurface
+device: cpu
+seed: 42
+num_sites: 1

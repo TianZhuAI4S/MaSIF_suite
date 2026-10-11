@@ -1,0 +1,13 @@
+task: ligand
+max_rho: 12.0
+n_ligands: 7
+n_thetas: 16
+n_rhos: 5
+n_rotations: 16
+feat_mask:
+- 1
+- 1
+- 1
+- 1
+- 1
+dropout: 0.0

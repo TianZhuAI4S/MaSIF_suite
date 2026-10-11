@@ -1,0 +1,7 @@
+task: alignment
+checkpoint: weights/seed/ipa_12A_surface_atom.pt
+input: /path/to/packet.npz
+output: results/alignment.npy
+device: cpu
+batch_size: 100
+seed: 0

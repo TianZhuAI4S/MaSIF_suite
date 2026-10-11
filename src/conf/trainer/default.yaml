@@ -1,0 +1,8 @@
+output: ???
+device: cpu
+checkpoint: null
+resume: false
+epochs: 100
+learning_rate: null
+class_weights: null
+seed: null

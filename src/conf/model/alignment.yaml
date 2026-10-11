@@ -1,0 +1,9 @@
+task: alignment
+selected_features:
+- 0
+- 1
+- 2
+- 3
+max_npoints: 200
+n_negatives: 100
+n_positives: 1

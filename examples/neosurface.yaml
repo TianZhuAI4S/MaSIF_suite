@@ -1,0 +1,10 @@
+task: neosurf
+action: score
+target: target_with_ligand.npz
+database:
+- already_aligned_binder.npz
+checkpoint: weights/neosurface/ipa_12A_surface_atom.pt
+output: results/neosurf
+device: cpu
+seed: 42
+num_sites: 1

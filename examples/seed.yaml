@@ -1,0 +1,13 @@
+task: seed
+action: search
+target: target.npz
+database:
+- source.npz
+checkpoint: weights/seed/ipa_12A_surface_atom.pt
+output: results/seed
+device: cpu
+seed: 42
+num_sites: 1
+registration:
+  mode: replay
+  path: original_poses.npz

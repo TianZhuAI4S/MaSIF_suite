@@ -1,0 +1,11 @@
+defaults:
+  - /train
+  - override /task: score
+  - _self_
+hydra:
+  searchpath:
+    - pkg://masif_torch.conf
+dataset:
+  input: /path/to/training/packets
+trainer:
+  output: results/train_score

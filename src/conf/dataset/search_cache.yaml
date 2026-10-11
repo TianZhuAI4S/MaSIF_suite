@@ -1,0 +1,5 @@
+kind: search_cache
+input: ???
+validation: null
+batch_size: null
+steps: 1000

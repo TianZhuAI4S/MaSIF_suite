@@ -1,0 +1,458 @@
+{
+  "passed": true,
+  "models": [
+    {
+      "checkpoint": "weights/site/interface_prediction_backup.pt",
+      "source": "artifacts/checkpoints/site_backup.pt",
+      "sha256": "0f8072ef232c2f23660704d1eda10a4a10e13d4507c277d6c1267a81239f55a9",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "checkpoint": "weights/search/surface_descriptors_historical.pt",
+      "source": "artifacts/checkpoints/ppi_search_historical.pt",
+      "sha256": "a21001a976749b8f4839fdc4a981a54fa00f4938791ae2ccfae67a08722b82ba",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            80
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            80
+          ]
+        }
+      }
+    },
+    {
+      "checkpoint": "weights/ligand/pocket_classification.pt",
+      "source": "artifacts/checkpoints/ligand.pt",
+      "sha256": "a51c2530c4a97faacba98eef34b0614973c3b21e5789558ae496282f81e39ea0",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            1,
+            1,
+            7
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            1,
+            1,
+            7
+          ]
+        }
+      }
+    },
+    {
+      "checkpoint": "weights/score/second_stage_interface_scoring.pt",
+      "source": "artifacts/checkpoints/score.pt",
+      "sha256": "08023e3fa6ad738690cd00064d992059aa735e6ac3537937fa2e071b6d442cde",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "checkpoint": "weights/seed/ipa_12A_surface.pt",
+      "source": "artifacts/design_checkpoints/masif_seed/models_std/weights_12A_012.hdf5/converted.pt",
+      "sha256": "0f8ac595b371e392a3f1844774b0d0f51ff0de26fee7a981545602545db86dcb",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "checkpoint": "weights/seed/ipa_12A_surface_atom.pt",
+      "source": "artifacts/design_checkpoints/masif_seed/models_std/weights_12A_0129.hdf5/converted.pt",
+      "sha256": "6b5587fe9fdf45ea5f94de76682eebc1532c12979c353ae909d26374295fe26f",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "checkpoint": "weights/seed/ipa_9A_surface_atom.pt",
+      "source": "artifacts/design_checkpoints/masif_seed/models_std/weights_9A_0123.hdf5/converted.pt",
+      "sha256": "1fc7deaa3ff037aeb0182bc466a40f272f24cd67b3d588b84a20097e0550ab35",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "checkpoint": "weights/seed/ipa_12A_benchmark.pt",
+      "source": "artifacts/design_checkpoints/masif_seed/models_benchmark/weights_seed_benchmark_12A_0123/converted.pt",
+      "sha256": "f57111e8be2d74675a21494f109388de9552f6eecbca10055638d812bd24bc24",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "checkpoint": "weights/seed/ipa_12A_benchmark_alternative.pt",
+      "source": "artifacts/design_checkpoints/masif_seed/models_std/weights_seed_benchmark_12A_0123.hdf5/converted.pt",
+      "sha256": "e31fef82f19546831665436de24d19495af4396d30d5100bb69d01ed1422a9a4",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "checkpoint": "weights/neosurface/ipa_12A_surface.pt",
+      "source": "artifacts/design_checkpoints/masif-neosurf/models_std/weights_12A_012.hdf5/converted.pt",
+      "sha256": "2d6d9cdad443a09a2d343869e1ae0db389db16f7db659c5a8f31e0d240367d91",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "checkpoint": "weights/neosurface/ipa_12A_surface_atom.pt",
+      "source": "artifacts/design_checkpoints/masif-neosurf/models_std/weights_12A_0129.hdf5/converted.pt",
+      "sha256": "eb32cd2312135ffc0053e213fd7d483fbe682467da375ce8b3c2d890ff4d2c81",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "checkpoint": "weights/neosurface/ipa_9A_surface_atom.pt",
+      "source": "artifacts/design_checkpoints/masif-neosurf/models_std/weights_9A_0123.hdf5/converted.pt",
+      "sha256": "fc2faf0d6379bd5e675183fff40a354e0e1f5a9883805ae5622164a29dd2ec5d",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "checkpoint": "weights/neosurface/ipa_12A_benchmark.pt",
+      "source": "artifacts/design_checkpoints/masif-neosurf/models_benchmark/weights_seed_benchmark_12A_0123/converted.pt",
+      "sha256": "3f284351415de41002a694ed8b3f0bba79c9d9f27f78ca0e9ab81a85a656190b",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "checkpoint": "weights/neosurface/ipa_12A_benchmark_alternative.pt",
+      "source": "artifacts/design_checkpoints/masif-neosurf/models_std/weights_seed_benchmark_12A_0123.hdf5/converted.pt",
+      "sha256": "01eaa38c28c96c0f3760edb88ce82ef0a62e46000501c8034863d42b0224d1ed",
+      "byte_equal": true,
+      "complete_payload_equal": true,
+      "forward": {
+        "cpu": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        },
+        "cuda": {
+          "exact": true,
+          "max_abs": 0.0,
+          "shape": [
+            8,
+            2
+          ]
+        }
+      }
+    }
+  ],
+  "models_checked": 14,
+  "devices": [
+    "cpu",
+    "cuda"
+  ],
+  "example_paths_checked": [
+    {
+      "example": "examples/benchmark.yaml",
+      "field": "checkpoint",
+      "checkpoint": "weights/neosurface/ipa_12A_surface_atom.pt"
+    },
+    {
+      "example": "examples/inference_alignment.yaml",
+      "field": "checkpoint",
+      "checkpoint": "weights/seed/ipa_12A_surface_atom.pt"
+    },
+    {
+      "example": "examples/ligand.yaml",
+      "field": "checkpoint",
+      "checkpoint": "weights/ligand/pocket_classification.pt"
+    },
+    {
+      "example": "examples/neosurface.yaml",
+      "field": "checkpoint",
+      "checkpoint": "weights/neosurface/ipa_12A_surface_atom.pt"
+    },
+    {
+      "example": "examples/preparation_ligand.yaml",
+      "field": "site_checkpoint",
+      "checkpoint": "weights/site/interface_prediction_backup.pt"
+    },
+    {
+      "example": "examples/preparation_ligand.yaml",
+      "field": "search_checkpoint",
+      "checkpoint": "weights/search/surface_descriptors_historical.pt"
+    },
+    {
+      "example": "examples/preparation_protein.yaml",
+      "field": "site_checkpoint",
+      "checkpoint": "weights/site/interface_prediction_backup.pt"
+    },
+    {
+      "example": "examples/preparation_protein.yaml",
+      "field": "search_checkpoint",
+      "checkpoint": "weights/search/surface_descriptors_historical.pt"
+    },
+    {
+      "example": "examples/score.yaml",
+      "field": "checkpoint",
+      "checkpoint": "weights/score/second_stage_interface_scoring.pt"
+    },
+    {
+      "example": "examples/search.yaml",
+      "field": "checkpoint",
+      "checkpoint": "weights/search/surface_descriptors_historical.pt"
+    },
+    {
+      "example": "examples/seed.yaml",
+      "field": "checkpoint",
+      "checkpoint": "weights/seed/ipa_12A_surface_atom.pt"
+    },
+    {
+      "example": "examples/site.yaml",
+      "field": "checkpoint",
+      "checkpoint": "weights/site/interface_prediction_backup.pt"
+    }
+  ],
+  "neosurface_previous_seed_state_equal": true,
+  "gitignore": {
+    "binary_weights_ignored": true,
+    "catalog_manifest_tool_visible": true
+  },
+  "scope": "Exact original Torch versus renamed-copy comparison; prior TF/Torch limits unchanged.",
+  "organizer": {
+    "repeated_run_file_and_manifest_exact": true,
+    "wrong_ipa_point_count_rejected_before_copy": true,
+    "different_destination_preserved": true
+  },
+  "regression": {
+    "numerics": {
+      "tests": 11,
+      "skips": 0,
+      "failures": 0,
+      "seconds": 12.546
+    },
+    "configuration": {
+      "tests": 4,
+      "skips": 0,
+      "failures": 0,
+      "seconds": 9.199
+    }
+  },
+  "cli": {
+    "command": "masif alignment --config examples/inference_alignment.yaml",
+    "exit_code": 0,
+    "old_weight_probability_exact": true,
+    "shape": [
+      8,
+      2
+    ]
+  }
+}

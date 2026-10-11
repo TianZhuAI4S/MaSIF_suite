@@ -1,0 +1,268 @@
+{
+  "passed": true,
+  "scope": "Independent reconstruction on all28 completed with-ligand target cases; original AST Top-K short-list semantics; synthetic stable within-case and native-before-decoy tie ordering. Combined112-case analysis is not claimed before completion.",
+  "completed_target_cases": 28,
+  "cases": [
+    {
+      "target": "1A7X_A",
+      "ranked_groups": 7,
+      "native_metric_groups": 1,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "1A7X_B",
+      "ranked_groups": 3,
+      "native_metric_groups": 0,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "1S9D_A",
+      "ranked_groups": 3,
+      "native_metric_groups": 3,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "1S9D_E",
+      "ranked_groups": 13,
+      "native_metric_groups": 3,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "1TCO_AB",
+      "ranked_groups": 6,
+      "native_metric_groups": 2,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "1TCO_C",
+      "ranked_groups": 12,
+      "native_metric_groups": 3,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "3QEL_A",
+      "ranked_groups": 8,
+      "native_metric_groups": 2,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "3QEL_B",
+      "ranked_groups": 6,
+      "native_metric_groups": 1,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "4DRI_A",
+      "ranked_groups": 5,
+      "native_metric_groups": 2,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "4DRI_B",
+      "ranked_groups": 6,
+      "native_metric_groups": 1,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "4MDK_A",
+      "ranked_groups": 6,
+      "native_metric_groups": 0,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "4MDK_E",
+      "ranked_groups": 5,
+      "native_metric_groups": 1,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "6ENG_A",
+      "ranked_groups": 12,
+      "native_metric_groups": 1,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "6ENG_B",
+      "ranked_groups": 27,
+      "native_metric_groups": 2,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "6H0F_B",
+      "ranked_groups": 6,
+      "native_metric_groups": 0,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "6H0F_C",
+      "ranked_groups": 39,
+      "native_metric_groups": 3,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "6N4N_A",
+      "ranked_groups": 9,
+      "native_metric_groups": 1,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "6N4N_F",
+      "ranked_groups": 1,
+      "native_metric_groups": 1,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "6OB5_B",
+      "ranked_groups": 4,
+      "native_metric_groups": 1,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "6OB5_D",
+      "ranked_groups": 8,
+      "native_metric_groups": 2,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "6QTL_A",
+      "ranked_groups": 17,
+      "native_metric_groups": 1,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "6QTL_C",
+      "ranked_groups": 10,
+      "native_metric_groups": 1,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "6SJ7_A",
+      "ranked_groups": 0,
+      "native_metric_groups": 0,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "6SJ7_C",
+      "ranked_groups": 15,
+      "native_metric_groups": 2,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "7DC8_AB",
+      "ranked_groups": 19,
+      "native_metric_groups": 0,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "7DC8_CF",
+      "ranked_groups": 12,
+      "native_metric_groups": 0,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "7TE8_A",
+      "ranked_groups": 10,
+      "native_metric_groups": 2,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    },
+    {
+      "target": "7TE8_C",
+      "ranked_groups": 6,
+      "native_metric_groups": 3,
+      "ranking_and_metric_lookup_exact": true,
+      "fingerprints_match": true
+    }
+  ],
+  "short_list_regression": {
+    "k": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "original_source_topk": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "inclusive_topk": [
+      0,
+      1,
+      2,
+      2
+    ]
+  },
+  "stable_best_pose_tie_order_passed": true,
+  "native_before_decoy_tie_order_passed": true,
+  "original_source_sha256": "e4ea8c3b0e9901a9ae8bc69ec321831292438177999d696020747355e8e059d6",
+  "tool_sha256": "12d98557b86cbd94bd3405e69090420bdb82573d5fcbf489ce14786e3bdceb6a",
+  "neural_scores_recomputed": false,
+  "malformed_input_gates": [
+    {
+      "gate": "duplicate_metric_rank",
+      "rejected": true,
+      "message": "Duplicate or extra native metric ranks: <temporary case>"
+    },
+    {
+      "gate": "extra_metric_rank",
+      "rejected": true,
+      "message": "Duplicate or extra native metric ranks: <temporary case>"
+    },
+    {
+      "gate": "nonfinite_rmsd",
+      "rejected": true,
+      "message": "Native RMSD/iRMSD must be finite and nonnegative: <temporary case>"
+    },
+    {
+      "gate": "negative_irmsd",
+      "rejected": true,
+      "message": "Native RMSD/iRMSD must be finite and nonnegative: <temporary case>"
+    },
+    {
+      "gate": "wrong_metric_rank",
+      "rejected": true,
+      "message": "Native group metrics do not match its score/rank: <temporary case>"
+    },
+    {
+      "gate": "nonfinite_accepted_score",
+      "rejected": true,
+      "message": "Nonfinite accepted probability: <temporary case>"
+    },
+    {
+      "gate": "incomplete112_case_run",
+      "rejected": true
+    },
+    {
+      "gate": "case_identity_mismatch",
+      "rejected": true
+    }
+  ]
+}

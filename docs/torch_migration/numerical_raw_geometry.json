@@ -1,0 +1,116 @@
+{
+  "passed": true,
+  "checks": {
+    "vertex.x": {
+      "shape": [
+        2253
+      ],
+      "other_shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "vertex.y": {
+      "shape": [
+        2253
+      ],
+      "other_shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "vertex.z": {
+      "shape": [
+        2253
+      ],
+      "other_shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "vertex.charge": {
+      "shape": [
+        2253
+      ],
+      "other_shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "vertex.hbond": {
+      "shape": [
+        2253
+      ],
+      "other_shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "vertex.hphob": {
+      "shape": [
+        2253
+      ],
+      "other_shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "vertex.iface": {
+      "shape": [
+        2253
+      ],
+      "other_shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "vertex.nx": {
+      "shape": [
+        2253
+      ],
+      "other_shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "vertex.ny": {
+      "shape": [
+        2253
+      ],
+      "other_shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "vertex.nz": {
+      "shape": [
+        2253
+      ],
+      "other_shape": [
+        2253
+      ],
+      "exact": true,
+      "max_abs": 0.0
+    },
+    "face.vertex_indices": {
+      "shape": [
+        4502
+      ],
+      "other_shape": [
+        4502
+      ],
+      "exact": true,
+      "max_abs": null
+    }
+  },
+  "correction": "Original KDTree interpolation retained; modern sklearn equidistant ordering differs"
+}

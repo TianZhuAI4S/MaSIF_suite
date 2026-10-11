@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "replayed_real_candidates": 53,
+  "all_row_fields_exact": true,
+  "exact_probability_importance_features_pose_clashes": true,
+  "exact_sampling_rng": true,
+  "descriptor_checks": 42,
+  "exact_descriptor_indices_distances_order": true,
+  "captured_legacy_fitness_range": [
+    14.0,
+    132.0
+  ],
+  "pose_provider": "Test-only RecordedPoses preserves legacy count-like fitness; production Replay validation unchanged.",
+  "elapsed_seconds": {
+    "baseline": 3.8611003747209907,
+    "optimized": 3.830710746347904
+  },
+  "baseline_source_sha256": "5e8bfb6668a75f6df6e5d82f723aaf26397f5a8fbd3d24553bf78a3b26dd5046",
+  "optimized_source_sha256": "e7153c6c7fd251a4d143e7633b683f5ce672cdf835470807562ab523e117d8e3",
+  "scope": "53 real recorded candidates through the complete Seed search/filter path; no full benchmark."
+}

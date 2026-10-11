@@ -1,0 +1,12 @@
+task: site
+max_rho: 9.0
+n_thetas: 4
+n_rhos: 3
+n_rotations: 4
+feat_mask:
+- 1
+- 1
+- 1
+- 1
+- 1
+n_conv_layers: 3

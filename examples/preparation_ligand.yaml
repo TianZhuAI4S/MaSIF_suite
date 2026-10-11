@@ -1,0 +1,17 @@
+task: preparation
+pdb: /home/tian/git_repo/masif_torch/artifacts/upstream_repos/masif-neosurf/example/1a7x.pdb
+source_root: /home/tian/git_repo/masif_torch/artifacts/upstream_repos/masif-neosurf/masif/source
+legacy_python: /work/lpdi/users/gainza/masif/tensorflow-1.12_on_cpu_anthony/bin/python
+identifier: 1A7X_A
+ligand: FKA_B
+sdf: /home/tian/git_repo/masif_torch/artifacts/upstream_repos/masif-neosurf/example/1a7x_C_FKA.sdf
+output: /home/tian/git_repo/masif_torch/artifacts/raw_pipeline/ligand
+site_checkpoint: weights/site/interface_prediction_backup.pt
+search_checkpoint: weights/search/surface_descriptors_historical.pt
+environment:
+  MSMS_BIN: /work/lpdi/bin/apbs-pdb2pqr/bin/msms
+  PDB2PQR_BIN: /work/lpdi/users/gainza/programs/apbs/pdb2pqr-linux-bin64-2.1.1/pdb2pqr
+  APBS_BIN: /work/lpdi/bin/apbs-pdb2pqr/bin/apbs
+  MULTIVALUE_BIN: /work/lpdi/bin/apbs-pdb2pqr/tools/bin/multivalue
+  REDUCE_HET_DICT: /work/lpdi/bin/reduce/reduce_wwPDB_het_dict.txt
+  PATH: /work/lpdi/bin/reduce:/home/tian/.nvm/versions/node/v24.16.0/bin:/home/tian/git_repo/aria2/bin:/home/tian/git_repo/TMalign:/home/tian/data/mmseqs/bin:/home/tian/.nvm/versions/node/v24.16.0/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/codex-path:/work/lpdi/users/tian/.codex/tmp/arg0/codex-arg0Lowouz:/home/tian/.local/bin:/home/tian/.nvm/versions/node/v24.16.0/bin:/home/tian/git_repo/aria2/bin:/home/tian/git_repo/TMalign:/home/tian/data/mmseqs/bin:/home/tian/.nvm/versions/node/v24.16.0/bin:/home/tian/.nvm/versions/node/v24.16.0/bin:/work/lpdi/users/tian/data/google-cloud-sdk/bin:/home/tian/git_repo/aria2/bin:/home/tian/git_repo/TMalign:/home/tian/data/mmseqs/bin:/work/lpdi/users/tian/miniconda3/bin:/work/lpdi/users/tian/miniconda3/condabin:/home/tian/.local/bin:/home/tian/bin:/usr/lib64/ccache:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin

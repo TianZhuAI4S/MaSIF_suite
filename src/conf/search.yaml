@@ -1,0 +1,9 @@
+defaults:
+  - task: search
+  - _self_
+checkpoint: ???
+input: ???
+output: ???
+device: cpu
+batch_size: 100
+seed: 0

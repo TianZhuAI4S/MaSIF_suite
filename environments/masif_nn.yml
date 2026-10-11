@@ -1,0 +1,8 @@
+name: masif_nn
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - tensorflow-cpu==2.21.0

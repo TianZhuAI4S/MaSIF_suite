@@ -1,0 +1,278 @@
+{
+  "passed": true,
+  "accepted_real_poses": 53,
+  "exact_probability": true,
+  "exact_point_importance": true,
+  "equal_nan": true,
+  "unchanged_rng": true,
+  "oversized_sampling_boundary": true,
+  "initial_deferred_importance_exactly_zero": true,
+  "elapsed_seconds": 7.093143784441054,
+  "cases": [
+    {
+      "packet": "site_2_1A7X_A_1058.npz",
+      "points": 171,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_A_2140.npz",
+      "points": 200,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_1031.npz",
+      "points": 183,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_1139.npz",
+      "points": 195,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_1228.npz",
+      "points": 179,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_1326.npz",
+      "points": 200,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_1582.npz",
+      "points": 155,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_1674.npz",
+      "points": 188,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_1721.npz",
+      "points": 158,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_198.npz",
+      "points": 182,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_1983.npz",
+      "points": 200,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_2036.npz",
+      "points": 185,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_2062.npz",
+      "points": 157,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_2068.npz",
+      "points": 175,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_442.npz",
+      "points": 200,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_526.npz",
+      "points": 172,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_735.npz",
+      "points": 177,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_751.npz",
+      "points": 162,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_813.npz",
+      "points": 186,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1A7X_B_845.npz",
+      "points": 185,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1S9D_E_4159.npz",
+      "points": 200,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1TCO_C_115.npz",
+      "points": 168,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1TCO_C_1315.npz",
+      "points": 177,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1TCO_C_1659.npz",
+      "points": 189,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1TCO_C_2239.npz",
+      "points": 188,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1TCO_C_351.npz",
+      "points": 200,
+      "exact": true
+    },
+    {
+      "packet": "site_2_1TCO_C_741.npz",
+      "points": 180,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_1198.npz",
+      "points": 179,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_1305.npz",
+      "points": 199,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_1416.npz",
+      "points": 162,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_1699.npz",
+      "points": 168,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_2137.npz",
+      "points": 180,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_2152.npz",
+      "points": 161,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_2157.npz",
+      "points": 200,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_2261.npz",
+      "points": 200,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_2474.npz",
+      "points": 174,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_2508.npz",
+      "points": 165,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_28.npz",
+      "points": 154,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_424.npz",
+      "points": 185,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_485.npz",
+      "points": 163,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_5.npz",
+      "points": 183,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_614.npz",
+      "points": 164,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_678.npz",
+      "points": 200,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_754.npz",
+      "points": 195,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_770.npz",
+      "points": 189,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_826.npz",
+      "points": 175,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_841.npz",
+      "points": 174,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_848.npz",
+      "points": 162,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_860.npz",
+      "points": 175,
+      "exact": true
+    },
+    {
+      "packet": "site_2_4DRI_A_932.npz",
+      "points": 200,
+      "exact": true
+    },
+    {
+      "packet": "site_2_6OB5_B_4203.npz",
+      "points": 200,
+      "exact": true
+    },
+    {
+      "packet": "site_2_6OB5_B_5325.npz",
+      "points": 200,
+      "exact": true
+    },
+    {
+      "packet": "site_2_7TE8_A_960.npz",
+      "points": 200,
+      "exact": true
+    }
+  ]
+}

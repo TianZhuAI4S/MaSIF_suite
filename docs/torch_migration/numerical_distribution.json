@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "wheel": "/work/lpdi/users/tian/git_repo/masif_torch/artifacts/distribution/masif-0.2.0-py3-none-any.whl",
+  "wheel_sha256": "77262718ac7d37267137a563c8bcb3485882522aec96e1ee174c8952fe4d033e",
+  "python_files": 47,
+  "yaml_resources": 30,
+  "all_resources_byte_equal": true,
+  "cli_outside_checkout": true,
+  "stdlib_only_bootstrap": true,
+  "installed_imports": {
+    "presets": 12,
+    "task_folders": 10,
+    "public_api_identity": true,
+    "model_state_exact": true,
+    "lazy_import": true
+  },
+  "installed_regressions_passed": true,
+  "installed_regressions_skipped": 0,
+  "installed_regression_count": 43,
+  "dependency_scope": "Regular --no-deps wheel in isolated prefix using the validated Python/Torch environment; not a clean dependency resolver or PyPI publication."
+}

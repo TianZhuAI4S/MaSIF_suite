@@ -1,0 +1,9 @@
+defaults:
+  - task: benchmark
+  - _self_
+dataset: ???
+definition: ???
+checkpoint: ???
+output: results/benchmark
+workers: 1
+resume: false
