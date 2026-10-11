@@ -64,7 +64,6 @@ checkpoint
 *.xz
 *.whl
 *.egg
-!/tests/fixtures/**
 !/examples/fixtures/**
 
 # Python, test, notebook, and documentation caches.
@@ -107,3 +106,30 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Local migration records, regression tests, and internal audit tools.
+/docs/
+/tests/
+/tools/analyze_benchmark.py
+/tools/certify_benchmark_resume.py
+/tools/check_input_shapes.py
+/tools/create_source_oracles.py
+/tools/export_benchmark_geometry.py
+/tools/export_benchmark_scores.py
+/tools/export_ipa_source.py
+/tools/legacy_registration_worker.py
+/tools/pack_preparation_references.py
+/tools/pack_real_reference.py
+/tools/profile_benchmark_registration.py
+/tools/rosetta_worker.py
+/tools/smoke_design.py
+/tools/smoke_workflows.py
+/tools/validate_benchmark_geometry.py
+/tools/validate_benchmark_importance.py
+/tools/validate_benchmark_protocol.py
+/tools/validate_benchmark_scores.py
+/tools/validate_design_geometry.py
+/tools/validate_distribution.py
+/tools/validate_engineering_geometry.py
+/tools/validate_engineering_workflow.py
+/tools/validate_ipa_source.py

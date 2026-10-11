@@ -66,7 +66,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--download", action="store_true")
     args = parser.parse_args()
-    specification = Path(__file__).resolve().parents[1] / "tests/fixtures/design_members.json"
+    specification = Path(__file__).resolve().parent / "data/design_members.json"
     manifest = json.loads(specification.read_text())
     verified, missing = 0, []
     for member in manifest["files"]:

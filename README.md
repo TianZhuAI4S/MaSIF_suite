@@ -55,10 +55,10 @@ Use the original training/validation/test splits for your application. Protein i
 
 There are two starting points:
 
-- **Prepared surfaces or pockets:** use the original precomputed arrays, descriptors, or converted numeric NPZ packets. [Data formats and conversion](docs/USAGE.md#input-data-and-preparation) describe how to create them.
+- **Prepared surfaces or pockets:** use the original precomputed arrays, descriptors, or converted numeric NPZ packets. [Data formats and conversion](USAGE.md#input-data-and-preparation) describe how to create them.
 - **Raw protein or protein/ligand structures:** run the preparation workflow below to generate surfaces, chemical features, and 9/12 Å patches.
 
-Original TensorFlow/Keras checkpoints can be converted to native Torch checkpoints. Conversion and pretrained-model provenance are documented in the [weight guide](docs/USAGE.md#convert-tensorflow-weights). Ready-to-use weights are grouped by task under `weights/`, with filenames describing their purpose. See the [weight catalog](weights/README.md) for variants, provenance and known limits. Provide the appropriate task checkpoint in the commands below; ScoreNN and alignment checkpoints represent different models.
+Original TensorFlow/Keras checkpoints can be converted to native Torch checkpoints. Conversion and pretrained-model provenance are documented in the [weight guide](USAGE.md#convert-tensorflow-weights). Ready-to-use weights are grouped by task under `weights/`, with filenames describing their purpose. See the [weight catalog](weights/README.md) for variants, provenance and known limits. Provide the appropriate task checkpoint in the commands below; ScoreNN and alignment checkpoints represent different models.
 
 ## Applications
 
@@ -79,7 +79,7 @@ masif site checkpoint=weights/site/interface_prediction_backup.pt \
   input=data/surfaces/1A7X_A.npz output=results/site/1A7X_A.npy
 ```
 
-The output contains one probability per surface vertex. For PLY visualization and dataset preparation, see the [detailed site workflow](docs/USAGE.md#masif-site).
+The output contains one probability per surface vertex. For PLY visualization and dataset preparation, see the [detailed site workflow](USAGE.md#masif-site).
 
 ### MaSIF-search
 
@@ -90,7 +90,7 @@ masif search checkpoint=weights/search/surface_descriptors_historical.pt \
   input=data/surfaces/1A7X_A.npz output=results/descriptors/1A7X_A.npy
 ```
 
-Use these descriptors for complementary-patch retrieval and subsequent alignment. The detailed guide also shows `masif surface` for producing both straight/flipped orientations from original precomputation directories. The [search guide](docs/USAGE.md#masif-search) includes the original cache format and training inputs.
+Use these descriptors for complementary-patch retrieval and subsequent alignment. The detailed guide also shows `masif surface` for producing both straight/flipped orientations from original precomputation directories. The [search guide](USAGE.md#masif-search) includes the original cache format and training inputs.
 
 ### MaSIF-ligand
 
@@ -101,7 +101,7 @@ masif ligand checkpoint=weights/ligand/pocket_classification.pt \
   input=data/pockets/example.npz output=results/ligand/example.npy
 ```
 
-Pocket generation and original TFRecord conversion are covered in the [ligand guide](docs/USAGE.md#masif-ligand).
+Pocket generation and original TFRecord conversion are covered in the [ligand guide](USAGE.md#masif-ligand).
 
 ### Second-stage ScoreNN and alignment scoring
 
@@ -114,7 +114,7 @@ masif alignment checkpoint=weights/seed/ipa_12A_surface_atom.pt \
   input=data/alignment/example.npz output=results/alignment/example.npy
 ```
 
-ScoreNN scores the original second-stage search features. The alignment network supplies the IPA scores used by seed and neosurface workflows. See the [neural workflow guide](docs/USAGE.md#neural-network-applications) for their input formats.
+ScoreNN scores the original second-stage search features. The alignment network supplies the IPA scores used by seed and neosurface workflows. See the [neural workflow guide](USAGE.md#neural-network-applications) for their input formats.
 
 ### MaSIF-seed
 
@@ -124,7 +124,7 @@ Retrieve complementary surface patches, align candidate binders, score their int
 masif seed --config examples/seed.yaml
 ```
 
-Configure a target surface, candidate surface database, and alignment checkpoint. Results include candidate diagnostics and accepted aligned structures. [Seed usage](docs/USAGE.md#masif-seed-and-masif-neosurface) describes the public fixtures and input orientations.
+Configure a target surface, candidate surface database, and alignment checkpoint. Results include candidate diagnostics and accepted aligned structures. [Seed usage](USAGE.md#masif-seed-and-masif-neosurface) describes the public fixtures and input orientations.
 
 ### MaSIF-neosurface
 
@@ -134,7 +134,7 @@ Score a previously aligned protein/ligand complex or search candidate partners:
 masif neosurface --config examples/neosurface.yaml
 ```
 
-The configuration chooses `action=score` or `action=search`; aligned scoring requires the target and partner in a common coordinate frame. See the [neosurface guide](docs/USAGE.md#neosurface-aligned-pair-scoring).
+The configuration chooses `action=score` or `action=search`; aligned scoring requires the target and partner in a common coordinate frame. See the [neosurface guide](USAGE.md#neosurface-aligned-pair-scoring).
 
 ### Raw protein and protein/ligand preparation
 
@@ -145,7 +145,7 @@ masif prepare --config examples/preparation_protein.yaml
 masif prepare --config examples/preparation_ligand.yaml
 ```
 
-Configure the original geometry interpreter, Reduce/MSMS/electrostatics tools, selected chains, and optional ligand template. A site/search checkpoint can also generate predictions on the prepared surface. [Preparation details](docs/USAGE.md#raw-protein-and-proteinligand-surfaces) explain the external dependencies.
+Configure the original geometry interpreter, Reduce/MSMS/electrostatics tools, selected chains, and optional ligand template. A site/search checkpoint can also generate predictions on the prepared surface. [Preparation details](USAGE.md#raw-protein-and-proteinligand-surfaces) explain the external dependencies.
 
 ### Rosetta relaxation and interface design
 
@@ -155,7 +155,7 @@ Refine an assembled protein/ligand/binder complex using the original protocols:
 masif rosetta --config examples/rosetta_1a7x.yaml
 ```
 
-Supply RosettaScripts, its database, DAlphaBall, protocol files, and partner/ligand inputs. The workflow runs relaxation and interface design; optional same-seed repetition checks output reproducibility. See the [Rosetta guide](docs/USAGE.md#rosetta-relaxation-and-interface-design).
+Supply RosettaScripts, its database, DAlphaBall, protocol files, and partner/ligand inputs. The workflow runs relaxation and interface design; optional same-seed repetition checks output reproducibility. See the [Rosetta guide](USAGE.md#rosetta-relaxation-and-interface-design).
 
 ## Train a model
 
@@ -167,7 +167,7 @@ masif train task=site dataset.input=data/site/train \
   trainer.epochs=10 trainer.device=cuda
 ```
 
-Use `task=search`, `ligand`, `score`, or `alignment` for another neural task. Their dataset formats differ; [training data and recovery](docs/USAGE.md#save-resume-python-api) provide the details. Override model/trainer settings with Hydra keys rather than editing source code.
+Use `task=search`, `ligand`, `score`, or `alignment` for another neural task. Their dataset formats differ; [training data and recovery](USAGE.md#save-resume-python-api) provide the details. Override model/trainer settings with Hydra keys rather than editing source code.
 
 Continue native Torch training from a saved state:
 
@@ -184,13 +184,12 @@ The epoch count requests additional epochs. A converted legacy checkpoint suppli
 
 Finite pretrained weights convert reversibly. Fixed-input TF/Torch forward, loss, and gradient comparisons use `atol=1e-5, rtol=1e-4`; cross-framework arithmetic is not generally bitwise equal. The evidence includes eight CPU/GPU groups and 400 tensors on real newly prepared protein/FKA surfaces, and 53 real poses scored with the original Keras model and Torch.
 
-Some original checkpoints contain NaN and are rejected. Independent IPA training parameter trajectories retain a strict numerical failure. Modern Open3D docking differs from historical random registration. The full benchmark was stopped at the user's request after 29/112 searches; fixed-input comparisons were completed. These limits and every test are recorded in the [scientific migration report](docs/torch_migration/REPORT.md) and [detailed numerical guide](docs/USAGE.md#reproduce-numerical-validation).
+Some original checkpoints contain NaN and are rejected. Independent IPA training parameter trajectories retain a strict numerical failure. Modern Open3D docking differs from historical random registration. The full benchmark was stopped at the user's request after 29/112 searches; fixed-input comparisons were completed. The [weight catalog](weights/README.md) explains model-specific limits; the [usage guide](USAGE.md#methods-and-numerical-contract) describes the numerical contract.
 
 ## Documentation
 
 - [Installation](INSTALL.md)
-- [Detailed usage, weight conversion, and numerical reruns](docs/USAGE.md)
-- [Implementation stages and overall report](docs/torch_migration/REPORT.md)
+- [Detailed usage and weight conversion](USAGE.md)
 - [License](LICENSE) and [BibTeX citation](citation.bib)
 
 ## Reference

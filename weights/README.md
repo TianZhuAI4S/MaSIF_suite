@@ -57,7 +57,7 @@ or generated weights; the weights are not bundled in the wheel.
 ## Recreate the layout
 
 After generating the validated source artifacts described in the
-[weight guide](../docs/USAGE.md#convert-tensorflow-weights), run:
+[weight guide](../USAGE.md#convert-tensorflow-weights), run:
 
 ```bash
 python tools/organize_weights.py
@@ -87,4 +87,4 @@ CPU/GPU inference comparisons pass `atol=1e-5, rtol=1e-4`; they do not establish
 universal bitwise inference equality or full paper benchmark performance.
 Historical search gradients and independent IPA training trajectories retain
 strict failures. The seven original NaN-containing site/search groups are excluded.
-See the [scientific report](../docs/torch_migration/REPORT.md).
+See the [numerical scope](../README.md#validation-and-scientific-scope).

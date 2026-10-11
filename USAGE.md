@@ -1,12 +1,12 @@
-# Detailed MaSIF usage and numerical validation
+# Detailed MaSIF usage
 
-This guide preserves the detailed preparation, checkpoint conversion, numerical verification, and compatibility commands. Run these commands from the standalone project root. The primary application interface is now `masif` with Hydra configuration; start with the [application README](../README.md) and [installation guide](../INSTALL.md). The `masif_torch` Python API and existing compatibility commands remain available.
+This guide preserves the detailed preparation, checkpoint conversion, numerical verification, and compatibility commands. Run these commands from the standalone project root. The primary application interface is now `masif` with Hydra configuration; start with the [application README](README.md) and [installation guide](INSTALL.md). The `masif_torch` Python API and existing compatibility commands remain available.
 
 MaSIF (Molecular Surface Interaction Fingerprints) learns interaction patterns from molecular surface geometry and chemistry. This standalone project provides PyTorch MaSIF-site, MaSIF-search, MaSIF-ligand, the second-stage ScoreNN, and the IPA alignment network used by MaSIF-seed and MaSIF-neosurf. It includes training, recovery, inference, legacy-weight conversion, prepared-surface retrieval, registration, scoring, and numerical audits.
 
-The implementation lives directly in `src/`, with each task in `src/tasks/<task>/`. Installation exposes the stable `masif_torch` package and `masif-torch` command. The original TensorFlow repository is a separate checkout, called `../masif` in examples; adjust this path to your installation.
+The implementation lives directly in `src/`, with each task in `src/tasks/<task>/`. Installation exposes the `masif` API and command, with `masif_torch` and `masif-torch` compatibility names. The original TensorFlow repository is a separate checkout, called `../masif` in examples; adjust this path to your installation.
 
-**Validated:** finite legacy weights, CPU/GPU inference and losses, original-source gradient comparisons, native Torch training recovery, real public precomputed surfaces, fixed-pose seed/neosurf geometry/scoring, complete raw protein/FKA preparation, and real Rosetta relaxation/interface design with exact same-seed output repeat. **Limits:** cross-framework operations are not generally bitwise identical; independent IPA training parameter updates fail the strict tolerance; modern Open3D docking is not an exact reproduction of historical random docking. Raw preparation, Rosetta, and full benchmarks are evaluated separately below. See the [overall report](torch_migration/REPORT.md).
+**Validated:** finite legacy weights, CPU/GPU inference and losses, original-source gradient comparisons, native Torch training recovery, real public precomputed surfaces, fixed-pose seed/neosurf geometry/scoring, complete raw protein/FKA preparation, and real Rosetta relaxation/interface design with exact same-seed output repeat. **Limits:** cross-framework operations are not generally bitwise identical; independent IPA training parameter updates fail the strict tolerance; modern Open3D docking is not an exact reproduction of historical random docking. Raw preparation, Rosetta, and full benchmarks are evaluated separately below.
 
 ## Contents
 
@@ -17,7 +17,6 @@ The implementation lives directly in `src/`, with each task in `src/tasks/<task>
 - [Neural-network applications](#neural-network-applications)
 - [MaSIF-seed and MaSIF-neosurface](#masif-seed-and-masif-neosurface)
 - [Raw preparation, Rosetta, and benchmarks](#raw-preparation-rosetta-and-benchmarks)
-- [Reproduce numerical validation](#reproduce-numerical-validation)
 - [Architecture and extension](#architecture-and-extension)
 - [Documentation and references](#documentation-and-references)
 
@@ -60,13 +59,14 @@ Prepared-array NN execution needs no TensorFlow, PyMesh, APBS, or system CUDA to
 
 ### Get the project and install
 
-Obtain this standalone project directory and run every command from its root:
+Clone this standalone repository and run commands from its root:
 
 ```bash
-cd /path/to/masif_torch
+git clone https://github.com/TianZhuAI4S/MaSIF_torch.git
+cd MaSIF_torch
 ```
 
-This migration is a local workspace project, not a published release of official MaSIF. Keep an original checkout separately for weights/source/geometry:
+This repository is a standalone PyTorch implementation and has not been published to PyPI. Keep an original checkout separately for weights/source/geometry:
 
 ```bash
 git clone https://github.com/LPDI-EPFL/masif.git ../masif
@@ -107,7 +107,7 @@ conda activate masif_torch
 python -m pip install -e '.[design]' --index-url https://pypi.org/simple
 ```
 
-TF `compat.v1` executes saved `.meta` graphs. TF2 has no `tf.contrib`; use these tools rather than invoking all original TF1 training scripts directly. Portable installation recipes are included in `environments/*.yml` and `environments/runtime-requirements.txt`. Optional machine-specific audit snapshots (`environments/*.lock.txt`) are kept locally and excluded from Git publication. Install the chosen Torch wheel first and local project separately; CUDA snapshots describe Linux CUDA, not CPU/cross-platform recipes. If inherited pip mirrors interfere, prefix the affected command with `PIP_CONFIG_FILE=/dev/null PIP_EXTRA_INDEX_URL=''` and specify the intended index. See [INSTALL.md](../INSTALL.md).
+TF `compat.v1` executes saved `.meta` graphs. TF2 has no `tf.contrib`; use these tools rather than invoking all original TF1 training scripts directly. Portable installation recipes are included in `environments/*.yml` and `environments/runtime-requirements.txt`. Optional machine-specific audit snapshots (`environments/*.lock.txt`) are kept locally and excluded from Git publication. Install the chosen Torch wheel first and local project separately; CUDA snapshots describe Linux CUDA, not CPU/cross-platform recipes. If inherited pip mirrors interfere, prefix the affected command with `PIP_CONFIG_FILE=/dev/null PIP_EXTRA_INDEX_URL=''` and specify the intended index. See [INSTALL.md](INSTALL.md).
 
 ## Input data and preparation
 
@@ -165,7 +165,7 @@ Site records lacking either class and ligand structures with no pocket of at lea
 
 ## Convert TensorFlow weights
 
-The [weight catalog](../weights/README.md) lists task/purpose filenames and their
+The [weight catalog](weights/README.md) lists task/purpose filenames and their
 limits. Local inference examples use `weights/`; original validation artifacts
 remain in `artifacts/` to preserve their recorded provenance. To organize existing
 validated artifacts without altering checkpoint bytes:
@@ -213,7 +213,7 @@ Pass the checkpoint **prefix**, without `.index`. Keep `.index`, `.data-*`, and 
 | `data/masif_ppi_search/transformation_training_data/models/nn_score/trained_model.hdf5` | TF object checkpoint prefix, convertible |
 | Seven other original checkpoint groups | NaN parameters/slots, rejected |
 
-Nonfinite exports write `rejected.json`; NaNs are not replaced with zeros. The site backup is not equivalent to the damaged main model. Details are in [stage 03](torch_migration/03_checkpoints.md).
+Nonfinite exports write `rejected.json`; NaNs are not replaced with zeros. The site backup is not equivalent to the damaged main model. See the known limitations in the [weight catalog](weights/README.md).
 
 A finite official historical search checkpoint is pinned at `51e5422fc6c5f25628dcfb64c2c521347c7d0569`:
 
@@ -282,7 +282,7 @@ python -m masif_torch evaluate-ligand --checkpoint /path/to/ligand/run/best.pt \
 
 Every eligible pocket draws 32 patches; evaluation defaults to 100 draws. `<structure>_labels.npy` contains zero-based classes. `<structure>_logits.npy` retains the old filename but contains **softmax probabilities**, `[pockets,samples,1,1,C]`. Single-pocket `predict` returns `[1,1,C]`.
 
-Sampling fixes the historical patch/mask mismatch and selects eligible pockets instead of skipping random undersized pockets. Fixed-packet mathematics is validated; the historical sampling schedule/trajectory is not claimed identical. See [stage 04](torch_migration/04_workflows.md).
+Sampling fixes the historical patch/mask mismatch and selects eligible pockets instead of skipping random undersized pockets. Fixed-packet mathematics is validated; the historical sampling schedule/trajectory is not claimed identical. Independent training trajectories can therefore differ.
 
 ### ScoreNN and IPA
 
@@ -408,7 +408,7 @@ The second command verifies local files without networking. Selected members are
 
 ### Seed retrieval and docking
 
-Copy [examples/seed.yaml](../examples/seed.yaml), replacing paths:
+Copy [examples/seed.yaml](examples/seed.yaml), replacing paths:
 
 ```yaml
 task: seed
@@ -469,7 +469,7 @@ python -m pip install -e '.[design,chemistry]' --index-url https://pypi.org/simp
 
 The original geometry algorithms remain isolated in a compatible legacy interpreter. The validated existing interpreter is Python 3.6.5, PyMesh 0.2.1, NumPy 1.19.4, SciPy 1.1.0, scikit-learn 0.24.0, Biopython 1.73, NetworkX 2.3, and Open3D 0.5.0.0. It was reused, not newly rebuilt. The pinned neosurf repository's `Dockerfile` is an upstream starting point for restoring these dependencies and reduce/MSMS/APBS/PDB2PQR/multivalue; a fresh build of that Dockerfile has not been validated in this migration. A compatible local interpreter or container wrapper must expose the configured source/data paths and executable tools.
 
-Copy [examples/preparation_protein.yaml](../examples/preparation_protein.yaml) or [examples/preparation_ligand.yaml](../examples/preparation_ligand.yaml), replacing machine-specific paths. Important configuration keys:
+Copy [examples/preparation_protein.yaml](examples/preparation_protein.yaml) or [examples/preparation_ligand.yaml](examples/preparation_ligand.yaml), replacing machine-specific paths. Important configuration keys:
 
 | Key | Required value |
 |---|---|
@@ -489,15 +489,15 @@ python -m masif_torch run --config examples/preparation_protein.yaml
 python -m masif_torch run --config examples/preparation_ligand.yaml
 ```
 
-The task executes checked subprocess stages and exchanges primitive NPZ arrays. It writes per-stage logs, `stages.json`, prepared PDB/PLY, 9/12 Å original patch arrays, and optional Torch site/straight/flipped predictions. Outputs keep the processed-root layout used by `pack-design`. Original PyMesh comparisons confirm that predicted PLY files retain coordinates, faces, and all unchanged vertex attributes exactly for both tested raw inputs; the new `iface` probabilities preserve original PyMesh serialization ([prediction-surface geometry](torch_migration/numerical_prediction_surface_geometry.json)).
+The preparation task runs checked external stages and writes per-stage logs, prepared PDB/PLY, original 9/12 Å patch arrays and optional Torch site/straight/flipped predictions. Outputs retain the processed-root layout used by `pack-design`.
 
-The raw **protein** pipeline actually completed for 1A7X A: 2,253 vertices, 4,502 faces, site output `[1,2253]`, and straight/flipped descriptors `[2253,80]`. Direct original execution and the bridge agree exactly in every PLY field (including H-bond/hydrophobicity) and face indices. Initial modern near-neighbor interpolation differed on distance ties; executing the original interpolation in the legacy geometry interpreter restored exact equality. This result covers the tested protein, not all ligand or geometry-version combinations. Evidence: [raw geometry comparison](torch_migration/numerical_raw_geometry.json), [18 exact precomputation arrays](torch_migration/numerical_raw_precomputation.json), and [stage 12](torch_migration/12_raw_preparation.md).
 
-For raw FKA, the bridge completes 76 missing hydrogens around 67 heavy atoms while keeping original heavy coordinates exactly. OpenBabel 3 can omit the MOL2 `SUBSTRUCTURE` table needed by PDB2PQR 2.1; the worker restores this table without changing atom/bond/charge entries. PDB2PQR CLI dialect selection is explicit and every external exit code is checked. The complete raw protein/ligand pipeline also finished: 2,543 vertices, site `[1,2543]`, and both descriptor orientations `[2543,80]`. New RDKit hydrogen coordinates are not claimed identical to historical hydrogen placement; fixed-input NN comparison is audited separately from hydrogen-generation equivalence. Both raw inputs pass independent TF/Torch validation on CPU and CUDA: full site surfaces of 2,253/2,543 vertices and 32 fixed search patches per input, eight groups / 400 forward, trace, loss, and gradient tensors. Maximum site probability error is below `3e-7`; maximum search descriptor error is `1.67e-6`. See [raw neural evidence](torch_migration/numerical_raw_neural.json).
+
+Ligand preparation preserves supplied heavy-atom coordinates and adds missing hydrogens. The MOL2 adapter supplies the substructure table required by old PDB2PQR. Hydrogen coordinates can differ from historical tools, so independently rebuilt ligand surfaces and downstream scores need not be identical. Select the matching PDB2PQR dialect in the configuration; external stage failures are reported.
 
 ### Rosetta relaxation and interface design
 
-Copy [examples/rosetta_1a7x.yaml](../examples/rosetta_1a7x.yaml), replacing external tool/database/Python paths:
+Copy [examples/rosetta_1a7x.yaml](examples/rosetta_1a7x.yaml), replacing external tool/database/Python paths:
 
 ```bash
 python -m masif_torch run --config examples/rosetta_1a7x.yaml
@@ -505,11 +505,12 @@ python -m masif_torch run --config examples/rosetta_1a7x.yaml
 
 Provide `binary` (RosettaScripts), `database`, `dalphaball`, `protocol_dir` (upstream `rosetta_scripts/seed_refine/src`), `legacy_python` for original `molfile_to_params.py`, modern `chemistry_python`, target/binder paths/chains, ligand name/chain, and a template SDF or prepared `ligand_sdf`. Optional `verify_repeat:true` runs interface design twice from the same relaxed structure and fixed seed.
 
-The task copies original XML/design schedules byte for byte with SHA256, parameterizes the ligand, places target/ligand in A and binder in B, executes the original contact selector, then runs FastRelax and interface design. It checks fresh output files, finite scores/coordinates, retained ligand/partners, and optional exact repeat equality. Logs and `results.json` record failures; success requires all requested stages to finish. The real 1A7X run completed all eight external phases with Rosetta 2021.16: relaxation (209.98 s), interface design (145.54 s), and a same-seed design repeat (143.93 s). All 143 FKA atoms were retained; the 3,466 exported design coordinate rows and all 36 exported score values are exactly equal to the repeat. This verifies the same binary/database/input/seed at file output precision, not internal state or cross-version equivalence. A second integration run consumed the newly prepared raw protein/FKA inputs and completed all six requested stages: relaxation and interface design retained all 143 FKA atoms, produced finite scores, and used the original XML bytes ([prepared-input results](torch_migration/numerical_rosetta_prepared.json)). Its rebuilt hydrogen coordinates differ from the standalone input, so the two runs are separate validations. Scaffold grafting remains a separate upstream workflow. See [stage 13](torch_migration/13_rosetta.md) and [standalone repeat results](torch_migration/numerical_rosetta.json).
+Rosetta uses the configured original protocols, parameterizes the ligand, places target/ligand in chain A and binder in chain B, then runs relaxation and interface design. It checks fresh output files, finite scores/coordinates and retained partners. Logs and `results.json` record stage failures. Optional same-seed repetition checks the same binary/database/input at output-file precision; it does not establish equivalence across versions or rebuilt hydrogen inputs. Scaffold grafting remains a separate upstream workflow.
 
 ### Public small-decoy benchmark and numerical comparison
 
-The benchmark task covers all 14 complexes, both target directions (28 subunits), with/without ligand, against the 28 subunits and 200 decoys: **112 searches**. The separate optional 8,879-decoy PDBbind dataset and the paper's seed design database are different datasets. Full preparation needs approximately 10 GB archive plus 17.3 GB extracted files and additional cache/results space.
+The optional public benchmark covers 112 searches over the original complexes and
+small-decoy database. Download the official archive and extract it before running:
 
 ```bash
 python tools/download_benchmark.py --output artifacts/benchmark_full
@@ -519,150 +520,14 @@ OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
   python -m masif_torch run --config examples/benchmark.yaml
 ```
 
-Download/extraction actually completed: 9,961,569,979 archive bytes, official MD5 `2b45977254f45c6e229390cc62f3685d`, 5,339 extracted files / 17,289,741,138 bytes, all member CRC32 checked. The extraction tool handles the archive's wrapped ZIP32 offsets.
+The extraction tool verifies member CRC32 and handles the archive's wrapped ZIP32
+offsets. The benchmark uses `weights/neosurface/ipa_12A_surface_atom.pt`; different
+upstream benchmark-training snapshots are not interchangeable defaults. Resume
+requires matching model, input, protocol and cache provenance.
 
-The protocol uses the actual upstream benchmark config: `models_std/weights_12A_0129.hdf5`, descriptor `<3`, interface `>0`, IPA `>.8`, three target sites, fitness `>=.3`, original clash limits, and modern 2,000-iteration RANSAC. Independent AST comparisons verify all 28 interface COMs and five random-transform/composition checks exactly ([33-check review](torch_migration/numerical_benchmark_protocol_review.json)). Benchmark input/cache/resume provenance is tied to checkpoint, definitions, consumed dataset files, original PDBs, code, cases, and cache hashes; incompatible resumed runs are rejected. Benchmark point importance is computed after acceptance; rejected poses explicitly mark this diagnostic as omitted. The eager and deferred paths preserve exact probabilities, accepted point importance (including NaN semantics), and RNG states for all 53 captured real poses, plus the oversized sampling boundary ([optimization regression](torch_migration/numerical_benchmark_importance.json)). Default seed scoring retains eager diagnostics.
-
-A complete 1A7X A comparison case also ran through the original Open3D 0.5 registration worker: 30,810 candidates and 53 accepted poses versus 67 accepted by the modern backend. Both recover the true partner at group rank 1, but pose coordinates differ. Ranking retains the upstream best pose per `(site,source)` group. RMSD/iRMSD summaries now read exported PDB coordinates as float32 and preserve the original protein-heavy atom selection and arithmetic. Independent original-source AST comparisons agree exactly for all 28 coordinate selections, the 18 captured native-partner pose metrics, and their best-group summary. The earlier unrounded-coordinate difference remains recorded in the [metric review](torch_migration/numerical_benchmark_metrics_review.json). For all 53 captured legacy-pose feature packets, original Keras logits/probabilities and Torch CPU/CUDA inference pass strict FP32 tolerances ([fixed-pose scores](torch_migration/numerical_benchmark_legacy_scores.json)). TF32 was initially detected causing CUDA strict failure; that failure remains in a [separate report](torch_migration/numerical_benchmark_legacy_scores_tf32.json), and the corrected test disables TF32 rather than loosening tolerance.
-
-At the user's request, the full evaluation was stopped after **29 of 112 searches** completed, retaining **1,925,440 candidates and 1,738 accepted poses**. The final task scope is fixed-input numerical comparison. The original 53-pose TF/Torch score comparison passes strict FP32 tolerance, and protocol/reader/metric/importance audits establish the exact comparisons described above. Full benchmark success and paper-wide recovery rates are not claimed. See [stage 14](torch_migration/14_benchmark.md) and the [stopped-run evidence](torch_migration/numerical_benchmark_partial_run.json) for retained partial execution. The complete-run commands above remain optional. After a future run completes all 112 cases, combine target/decoy rankings and analyze all 228 source proteins:
-
-```bash
-python tools/analyze_benchmark.py --run artifacts/benchmark_full/run \
-  --original-analysis artifacts/upstream_repos/masif-neosurf/computational_benchmark/analysis_utils.py \
-  --output docs/torch_migration/numerical_benchmark_combined.json
-```
-
-The analysis reports any-rank recovery and separate Top-K curves. `original_source_topk` executes the unchanged original function, including its `len(result_list)<=k` skip; `inclusive_topk` includes shorter result lists. These definitions are kept separate.
-
-Modern Open3D 0.19 random/stopping semantics and the explicit sorted database order differ from historical Open3D/filesystem order; successful completion does not prove identical poses, ranks, or paper recovery rates.
-
-## Reproduce numerical validation
-
-Existing evidence is in `docs/torch_migration/numerical_*.json`. Regeneration uses `masif_nn` for TF tools and `masif_torch` for validation/inference. Omit `--cuda` without GPU.
-
-### Original models and runtime tests
-
-```bash
-conda activate masif_nn
-python tools/create_source_oracles.py --source ../masif/source --output artifacts/source_oracles
-python tools/convert_records.py --input artifacts/source_oracles/synthetic.tfrecord --output artifacts/records
-python tools/check_input_shapes.py --oracles artifacts/source_oracles \
-  --output artifacts/input_shapes --report artifacts/numerical_input_shapes.json
-python tools/export_tf.py --repo ../masif --output artifacts/tf_exports
-conda activate masif_torch
-python -m unittest discover -s tests -v
-python tools/run_validation.py --exports artifacts/source_oracles \
-  --output artifacts/source_validated --report artifacts/numerical_source.json --cuda
-python tools/run_validation.py --exports artifacts/tf_exports \
-  --output artifacts/validated_checkpoints --report artifacts/numerical_checkpoints.json --cuda
-python tools/run_validation.py --exports artifacts/input_shapes \
-  --output artifacts/input_shapes_validated --report artifacts/numerical_input_shapes_torch.json --cuda
-python tools/smoke_workflows.py --oracles artifacts/source_oracles \
-  --score-export artifacts/tf_exports/data/masif_pdl1_benchmark/models/nn_score/trained_model.hdf5 \
-  --output artifacts/workflows --report artifacts/numerical_workflows.json --cuda
-```
-
-The original 18-test suite passed without skips after relocation. Final standalone installation verification passes **28 tests with no skips** and confirms **41 wheel source files are byte for byte identical** to the project sources, including all ten task packages and four external workers ([installation evidence](torch_migration/numerical_standalone_install.json)). The expanded integration suite includes source-oracle forward/loss/all-gradient tests, exact native dropout recovery, benchmark provenance rejection, partial-ligand hydrogen preservation, MOL2 compatibility, and Rosetta repeat-failure reporting. Missing generated oracles cause skips; skips are not numerical acceptance. Core-only setup can run `python -m unittest discover -s tests -p test_numerics.py -v`; design extra provides full geometry/PDB coverage.
-
-### Real surfaces and geometry
-
-After fetching fixtures/IPA weights:
-
-```bash
-conda activate masif_torch
-python tools/validate_design_geometry.py \
-  --source artifacts/upstream_repos/masif_seed/masif_seed_search/source/alignment_utils.py \
-  --fixture artifacts/real_fixtures/neosurf_1a7x --report artifacts/design_geometry.json
-python tools/smoke_design.py --fixtures artifacts/real_fixtures/neosurf_1a7x \
-  --checkpoint weights/seed/ipa_12A_surface_atom.pt \
-  --output artifacts/design_smoke --report artifacts/design_workflows.json --cuda
-python tools/pack_real_reference.py --fixtures artifacts/real_fixtures/neosurf_1a7x --output artifacts/real_fixtures
-conda activate masif_nn
-python tools/export_tf.py \
-  --checkpoint ../masif/data/masif_peptides/nn_models/all_feat_3l/model_data.bak/model \
-  --input artifacts/real_fixtures/site_real.npz --output artifacts/real_exports/site
-python tools/export_tf.py --checkpoint artifacts/upstream/51e5422/model \
-  --input artifacts/real_fixtures/search_real.npz --output artifacts/real_exports/search
-cp artifacts/real_exports/site/adam_reference.npz artifacts/real_exports/adam_reference.npz
-conda activate masif_torch
-python tools/run_validation.py --exports artifacts/real_exports \
-  --output artifacts/real_checkpoints --report artifacts/real_surfaces.json --cuda
-```
-
-The geometry audit extracts original functions via AST and records source hashes: 83 real/synthetic boundary comparisons pass exactly. Real 2GKW_B site/search passes strict CPU/GPU tolerance. Design smoke uses a constructed translation and relaxed thresholds for output coverage; it does not reproduce old random docking or paper benchmarks.
-
-### Raw-prepared protein/ligand neural references
-
-Use the checked preparation output directly, preserving full site indices and choosing 32 search patches for the four-block loss:
-
-```bash
-conda activate masif_torch
-python tools/pack_preparation_references.py --root artifacts/raw_pipeline/protein_bridge \
-  --identifier 1A7X_A --output artifacts/raw_pipeline/inputs/protein
-conda activate masif_nn
-python tools/export_tf.py \
-  --checkpoint ../masif/data/masif_peptides/nn_models/all_feat_3l/model_data.bak/model \
-  --input artifacts/raw_pipeline/inputs/protein/site.npz --output artifacts/raw_pipeline/exports/protein_site
-python tools/export_tf.py --checkpoint artifacts/upstream/51e5422/model \
-  --input artifacts/raw_pipeline/inputs/protein/search.npz --output artifacts/raw_pipeline/exports/protein_search
-conda activate masif_torch
-python -m masif_torch validate --export artifacts/raw_pipeline/exports/protein_site \
-  --checkpoint weights/site/interface_prediction_backup.pt --report artifacts/raw_pipeline/protein_site.json
-python -m masif_torch validate --export artifacts/raw_pipeline/exports/protein_search \
-  --checkpoint weights/search/surface_descriptors_historical.pt --report artifacts/raw_pipeline/protein_search.json
-```
-
-For the ligand-containing surface, replace preparation root with `artifacts/raw_pipeline/ligand` and use separate input/export/report paths. Both raw protein/FKA inputs pass the full-site audits (2,253/2,543 vertices, 60 tensors each) and 32-patch search audits (40 tensors each) on CPU and CUDA: eight groups, 400 tensors. See [summary](torch_migration/numerical_raw_neural.json). Add `--device cuda` to the validate commands to regenerate GPU results. These are fixed-input NN comparisons; independently generated hydrogen coordinates and historical random docking are separate comparisons.
-
-### Original Keras IPA source audit
-
-```bash
-conda activate masif_nn
-python tools/export_ipa_source.py \
-  --source artifacts/upstream_repos/masif_seed/masif_seed_search/source/alignment_evaluation_nn.py \
-  --checkpoint artifacts/upstream_repos/masif_seed/masif_seed_search/data/scoring_nn/models_std/weights_12A_0129.hdf5 \
-  --config artifacts/design_exports/masif_seed/models_std/weights_12A_0129.hdf5/config.json \
-  --real-features artifacts/design_smoke/cpu/seed/site_0_2GKW_B_35.npz \
-  --output artifacts/ipa_source/standard
-conda activate masif_torch
-python tools/validate_ipa_source.py --reference artifacts/ipa_source/standard \
-  --checkpoint weights/seed/ipa_12A_surface_atom.pt \
-  --report artifacts/ipa_source_real.json --cuda
-```
-
-**The last command is expected to exit 1.** `groups` preserves failing independent three-step parameter updates; source inference/loss/gradients/BN, same-gradient optimizer updates, and updated evaluation probabilities pass. Do not interpret the full audit as passing.
-
-Evidence: [source](torch_migration/numerical_source.json), [checkpoints](torch_migration/numerical_checkpoints.json), [20 IPA combinations](torch_migration/numerical_design_weights.json), [83 exact geometry checks](torch_migration/numerical_design_geometry.json), [real site/search](torch_migration/numerical_real_surfaces.json), [IPA grouped audit](torch_migration/numerical_ipa_source_real.json), [design workflows](torch_migration/numerical_design_workflows.json).
-
-### Original-registration pose scores
-
-The captured real comparison batch is `artifacts/benchmark_full/legacy_comparison/prepared_scores.npz`. It contains the 53 fixed legacy-pose `[200,4]` IPA packets; it must already exist from the completed comparison case. Re-export official-source scores and compare:
-
-```bash
-conda activate masif_nn
-python tools/export_benchmark_scores.py \
-  --input artifacts/benchmark_full/legacy_comparison/prepared_scores.npz \
-  --config artifacts/benchmark_full/legacy_comparison/config.json \
-  --source artifacts/upstream_repos/masif-neosurf/masif_seed_search/source/alignment_evaluation_nn.py \
-  --checkpoint artifacts/upstream_repos/masif-neosurf/masif_seed_search/data/scoring_nn/models_std/weights_12A_0129.hdf5 \
-  --output artifacts/benchmark_full/legacy_comparison/tensorflow_scores.npz
-conda activate masif_torch
-python tools/validate_benchmark_scores.py \
-  --reference artifacts/benchmark_full/legacy_comparison/tensorflow_scores.npz \
-  --checkpoint weights/neosurface/ipa_12A_surface_atom.pt \
-  --output artifacts/benchmark_full/legacy_comparison/score_comparison.json
-```
-
-The validator disables TF32 and tests CPU plus CUDA when available. This compares scores for the same captured inputs, not independent stochastic docking trajectories.
-
-Recheck eager versus deferred accepted-pose importance and sampling in Torch:
-
-```bash
-python tools/validate_benchmark_importance.py --config examples/benchmark.yaml \
-  --fixtures artifacts/benchmark_full/legacy_comparison/with_ligand/targets/1A7X_A \
-  --report artifacts/benchmark_full/legacy_comparison/importance_comparison.json
-```
+Modern Open3D registration can produce different poses and rankings from historical
+Open3D. The migration's full benchmark stopped after 29/112 searches; full paper
+recovery rates are not certified. Run the complete benchmark only if needed.
 
 ## Architecture and extension
 
@@ -685,11 +550,10 @@ masif_torch/
     shared/design/             # surfaces, features, registration
     models.py                  # compatible exports and model factory
     checkpoints.py, optim.py, data.py, training.py, validation.py, cli.py
-  tools/                       # reference export, conversion, fetch, audit/smoke
-  tests/                       # original-source and recovery regressions
+  tools/                       # input conversion, weight export/collection, data downloads
   environments/                # recipes, dependency pins, snapshots
   examples/                    # task configurations
-  docs/torch_migration/        # stage logs and numerical reports
+  USAGE.md                     # application instructions
   artifacts/                   # generated/downloaded local data and outputs
 ```
 
@@ -701,12 +565,6 @@ Neural tasks also support `run` JSON: `{"task":"site","checkpoint":"site.pt","in
 
 ## Documentation and references
 
-Stage records describe purpose, planned work, actual changes, numerical tests, and limits:
-
-[01 Baseline](torch_migration/01_baseline.md) · [02 Models](torch_migration/02_models.md) · [03 Checkpoints](torch_migration/03_checkpoints.md) · [04 Workflows](torch_migration/04_workflows.md) · [05 Installation/verification](torch_migration/05_end_to_end.md) · [06 Review](torch_migration/06_review.md) · [07 Design plan](torch_migration/07_seed_neosurf_plan.md) · [08 IPA](torch_migration/08_alignment_models.md) · [09 Design workflows](torch_migration/09_design_workflows.md) · [10 Design review](torch_migration/10_design_review.md) · [11 Standalone structure](torch_migration/11_standalone_structure.md) · [12 Raw preparation](torch_migration/12_raw_preparation.md) · [13 Rosetta](torch_migration/13_rosetta.md) · [14 Benchmark](torch_migration/14_benchmark.md) · [Overall report](torch_migration/REPORT.md).
-
-Earlier logs preserve historical paths and evidence; use this README and [INSTALL.md](../INSTALL.md) for current commands. No commit/publication is implied. Original PyMOL plugin/coloring and Docker documentation remain in the [official repository](https://github.com/LPDI-EPFL/masif); a new Torch Docker image and end-to-end PyMOL coloring were not validated. Prediction/descriptor array formats are preserved.
-
 Common issues:
 
 - **NaN checkpoint:** inspect `rejected.json`; select an explicit finite alternative or train anew. There is no exact repair of damaged weights.
@@ -715,7 +573,7 @@ Common issues:
 - **TensorFlow in runtime:** keep environments separate; TF reader/export tools run in `masif_nn`.
 - **Different training experiment:** initialization RNG, corrected ligand sampling, best selection, and cross-framework trajectories differ as documented.
 
-Original MaSIF is [Apache 2.0 licensed](../LICENSE); retain original license/attribution when distributing derivative code. Seed/neosurf code and data retain upstream terms. See the original [citation file](../citation.bib).
+Original MaSIF is [Apache 2.0 licensed](LICENSE); retain original license/attribution when distributing derivative code. Seed/neosurf code and data retain upstream terms. See the original [citation file](citation.bib).
 
 ### Original methods used by this repository
 
@@ -732,6 +590,6 @@ Original MaSIF is [Apache 2.0 licensed](../LICENSE); retain original license/att
 
 The related methods and applications above provide further reading; dMaSIF, physics-informed docking, DiffMaSIF, and SURFACE-Bind are not implemented by this repository.
 
-Full BibTeX entries are in [citation.bib](../citation.bib). Cite the original method for each application you use.
+Full BibTeX entries are in [citation.bib](citation.bib). Cite the original method for each application you use.
 
 Sources: [official Torch CUDA wheels](https://download.pytorch.org/whl/cu126/torch/), [TensorFlow installation](https://www.tensorflow.org/install/pip), [PyTorch numerical accuracy](https://docs.pytorch.org/docs/stable/notes/numerical_accuracy.html).

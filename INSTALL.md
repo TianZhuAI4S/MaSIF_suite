@@ -93,24 +93,31 @@ python -m pip check
 
 The validated reader uses tensorflow-cpu 2.21.0 on Python 3.12. Run the original export/conversion tools there, then perform NPZ-to-Torch conversion and inference in your Torch environment. Saved TF1 graphs use `compat.v1`; supplied adapters handle original source APIs. Original nonfinite checkpoint families are rejected. Finite alternative models retain explicit provenance.
 
-[The detailed guide](docs/USAGE.md#convert-tensorflow-weights) contains the complete commands and numerical validation recipes. Existing `environments/masif_torch.yml` and `scripts/install.sh` remain compatibility environment recipes; the primary installation above uses pip and `masif install-runtime`.
+[The detailed guide](USAGE.md#convert-tensorflow-weights) contains the complete commands and numerical validation recipes. Existing `environments/masif_torch.yml` and `scripts/install.sh` remain compatibility environment recipes; the primary installation above uses pip and `masif install-runtime`.
 
 ## Raw geometry and Rosetta prerequisites
 
 Prepared neural/design inputs can be used entirely in the modern environment. Raw preparation additionally needs Reduce, MSMS, PDB2PQR, APBS, multivalue, and the original PyMesh/geodesic routines. The validated bridge reused an isolated Python 3.6.5/PyMesh 0.2.1 interpreter with NumPy 1.19.4, SciPy 1.1.0, scikit-learn 0.24.0, Biopython 1.73, NetworkX 2.3, and Open3D 0.5.0.0. A fresh installation of every historical tool is not claimed.
 
-Use the pinned neosurf Dockerfile as an upstream restoration reference, or configure an existing compatible interpreter. In your preparation YAML, set `legacy_python`, `source_root`, input/ligand paths, and absolute external-tool paths. Put Reduce on the subprocess `environment.PATH`. PDB2PQR 2.1 needs `pdb2pqr_apbs_input: flag`; the later upstream dialect uses `filename`. [Raw preparation details](docs/USAGE.md#raw-protein-and-proteinligand-surfaces) describe the tested bridge.
+Use the pinned neosurf Dockerfile as an upstream restoration reference, or configure an existing compatible interpreter. In your preparation YAML, set `legacy_python`, `source_root`, input/ligand paths, and absolute external-tool paths. Put Reduce on the subprocess `environment.PATH`. PDB2PQR 2.1 needs `pdb2pqr_apbs_input: flag`; the later upstream dialect uses `filename`. [Raw preparation details](USAGE.md#raw-protein-and-proteinligand-surfaces) describe the tested bridge.
 
-Rosetta executables, database, and DAlphaBall are separately provided dependencies. Configure these, original protocol files, partner/ligand inputs, and parameterization interpreters in your Rosetta YAML. Python package installation does not install Rosetta. See the [Rosetta workflow](docs/USAGE.md#rosetta-relaxation-and-interface-design).
+Rosetta executables, database, and DAlphaBall are separately provided dependencies. Configure these, original protocol files, partner/ligand inputs, and parameterization interpreters in your Rosetta YAML. Python package installation does not install Rosetta. See the [Rosetta workflow](USAGE.md#rosetta-relaxation-and-interface-design).
 
 ## Verify the installation
 
 ```bash
 masif doctor
 python -m pip check
-python -m unittest discover -s tests -p test_numerics.py -v
+masif site --cfg job
 ```
 
-The last command runs tests from a source checkout; generated original-source references are required for numerical acceptance. Missing references cause skips. The final regular-wheel audit passed 43 installed tests without skips and matched all 47 Python files and 30 YAML resources exactly. This isolated-prefix audit used the existing validated dependency environment; it is not a fresh dependency installation. See the [package evidence](docs/torch_migration/numerical_distribution.json) and [migration report](docs/torch_migration/REPORT.md).
+These commands check the environment and configuration without running a full
+benchmark. Validate a newly exported checkpoint against its fixed TensorFlow
+reference with `masif validate`; conversion commands are in the
+[weight guide](USAGE.md#convert-tensorflow-weights).
 
-[Detailed numerical evidence](docs/USAGE.md#reproduce-numerical-validation) distinguishes exact weight/geometry comparisons from FP32 TF/Torch tolerance. Independent IPA training retains a strict parameter-update failure, and modern Open3D poses differ from historical registration. The optional full benchmark was stopped after 29/112 cases at the user's request; fixed-input numerical comparisons are the completed validation scope.
+The [numerical contract](USAGE.md#methods-and-numerical-contract) distinguishes
+exact weight conversion from FP32 TF/Torch inference tolerance. Independent IPA
+training retains a strict parameter-update failure, and modern Open3D poses can
+differ from historical registration. Full paper benchmark performance is not
+certified by installation checks.

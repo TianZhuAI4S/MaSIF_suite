@@ -1,9 +1,0 @@
-{
-  "tests": 18,
-  "passed": 18,
-  "skipped": 0,
-  "command": "python -m unittest discover -s torch/tests -v",
-  "dependencies_checked": true,
-  "shared_imports_without_tensorflow_or_open3d": true,
-  "functions_with_docstrings": true
-}
