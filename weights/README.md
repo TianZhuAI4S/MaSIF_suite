@@ -56,8 +56,8 @@ or generated weights; the weights are not bundled in the wheel.
 
 ## Recreate the layout
 
-After generating the validated source artifacts described in the
-[weight guide](../USAGE.md#convert-tensorflow-weights), run:
+If you already have converted artifacts under `artifacts/`, collect them into the
+task directories with:
 
 ```bash
 python tools/organize_weights.py
@@ -68,8 +68,9 @@ python tools/organize_weights.py --task seed --task neosurface
 The tool copies existing checkpoint bytes, verifies hashes and finite tensors,
 checks task compatibility and IPA feature/point configuration, and writes the
 manifest. Base source names are `artifacts/checkpoints/site_backup.pt`,
-`ppi_search_historical.pt`, `ligand.pt` and `score.pt` (all in that directory);
-the usage guide generates these before organizing. For ScoreNN, export the finite
+`ppi_search_historical.pt`, `ligand.pt` and `score.pt` (all in that directory).
+To generate them, follow the [weight conversion guide](../USAGE.md#convert-tensorflow-weights)
+and use these artifact paths as conversion destinations. For ScoreNN, export the finite
 original score checkpoint and convert it with `--output artifacts/checkpoints/score.pt`
 without `--include-optimizer`. Different existing destination
 weights are never overwritten. Original artifact files remain available for

@@ -192,7 +192,7 @@ masif site checkpoint=weights/site/interface_prediction_backup.pt \
   input=data/surfaces/1A7X_A.npz output=results/site/1A7X_A.npy
 ```
 
-The output contains one probability per surface vertex. For PLY visualization and dataset preparation, see the [detailed site workflow](USAGE.md#masif-site).
+The output contains one probability per surface vertex. For prepared-surface usage, see the [site workflow](USAGE.md#masif-site).
 
 ### MaSIF-search
 
@@ -203,7 +203,7 @@ masif search checkpoint=weights/search/surface_descriptors_historical.pt \
   input=data/surfaces/1A7X_A.npz output=results/descriptors/1A7X_A.npy
 ```
 
-Use these descriptors for complementary-patch retrieval and subsequent alignment. The detailed guide also shows `masif surface` for producing both straight/flipped orientations from original precomputation directories. The [search guide](USAGE.md#masif-search) includes the original cache format and training inputs.
+Use these descriptors for complementary-patch retrieval and subsequent alignment. The detailed guide also shows `masif surface` for producing both straight/flipped orientations from original precomputation directories. See the [search guide](USAGE.md#masif-search) and [training instructions](USAGE.md#training-and-continuing-a-run).
 
 ### MaSIF-ligand
 
@@ -227,7 +227,7 @@ masif alignment checkpoint=weights/seed/ipa_12A_surface_atom.pt \
   input=data/alignment/example.npz output=results/alignment/example.npy
 ```
 
-ScoreNN scores the original second-stage search features. The alignment network supplies the IPA scores used by seed and neosurface workflows. See the [neural workflow guide](USAGE.md#neural-network-applications) for their input formats.
+ScoreNN scores the original second-stage search features. The alignment network supplies the IPA scores used by seed and neosurface workflows. See the [neural workflow guide](USAGE.md#neural-network-applications) for commands.
 
 ### MaSIF-seed
 
@@ -280,7 +280,7 @@ masif train task=site dataset.input=data/site/train \
   trainer.epochs=10 trainer.device=cuda
 ```
 
-Use `task=search`, `ligand`, `score`, or `alignment` for another neural task. Their dataset formats differ; [training data and recovery](USAGE.md#save-resume-python-api) provide the details. Override model/trainer settings with Hydra keys rather than editing source code.
+Use `task=search`, `ligand`, `score`, or `alignment` for another neural task. Their dataset formats differ; [training data and recovery](USAGE.md#training-and-continuing-a-run) provide the details. Override model/trainer settings with Hydra keys rather than editing source code.
 
 Continue native Torch training from a saved state:
 
@@ -297,12 +297,12 @@ The epoch count requests additional epochs. A converted legacy checkpoint suppli
 
 Finite pretrained weights convert reversibly. Fixed-input TF/Torch forward, loss, and gradient comparisons use `atol=1e-5, rtol=1e-4`; cross-framework arithmetic is not generally bitwise equal. The evidence includes eight CPU/GPU groups and 400 tensors on real newly prepared protein/FKA surfaces, and 53 real poses scored with the original Keras model and Torch.
 
-Some original checkpoints contain NaN and are rejected. Independent IPA training parameter trajectories retain a strict numerical failure. Modern Open3D docking differs from historical random registration. The full benchmark was stopped at the user's request after 29/112 searches; fixed-input comparisons were completed. The [weight catalog](weights/README.md) explains model-specific limits; the [usage guide](USAGE.md#methods-and-numerical-contract) describes the numerical contract.
+Some original checkpoints contain NaN and are rejected. Independent IPA training parameter trajectories retain a strict numerical failure. Modern Open3D docking differs from historical random registration. The full benchmark was stopped at the user's request after 29/112 searches; fixed-input comparisons were completed. The [weight catalog](weights/README.md) explains model-specific limits.
 
 ## Documentation
 
 - [Installation](#installation)
-- [Detailed usage and weight conversion](USAGE.md)
+- [User guide](USAGE.md)
 - [License](LICENSE) and [BibTeX citation](citation.bib)
 
 ## Reference
